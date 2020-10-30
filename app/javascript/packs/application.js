@@ -7,6 +7,9 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+//= require ckeditor/init
+//= javascript_include_tag Ckeditor.cdn_url
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
