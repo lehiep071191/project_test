@@ -1,0 +1,37 @@
+<center> <h1>AllBook</h1></center>
+<%= button_tag 'create book', class: "btn btn-primary book-new" %>
+<div class = "book-form" style = "display: none;">
+	<input placeholder="title" type="text" name="book[title]" id="book_title">
+	<input placeholder="author" type="text" name="book[author]" id="book_author">
+	<textarea placeholder="description" name="book[description]" id="book_description"></textarea>
+	<select name="book[category]" id="book_category">
+		<%= options_for_select(Book.categories) %>
+	</select>	
+
+	<input type="button" class="btn btn-success create-book" >
+</div>	
+
+<table style = "border: 0.5px solid black; text-align: center">
+	<tr style = "border: 0.5px solid black;" id = "th">
+		<th style = "border: 0.5px solid black;width: 100px">
+			Title
+		</th>
+		<th  style = "border: 0.5px solid black;width: 200px">
+			author
+		</th >
+		<th style = "border: 0.5px solid black;width: 400px">
+			description
+		</th >
+		<th style = "border: 0.5px solid black;width: 100px">
+			category
+		</th >
+		<td style = "border: 0.5px solid black;width: 100px">
+			edit 
+	</td>
+	</tr>
+		<tbody id = "append-book">
+			<%= render @books %>
+		</tbody>
+
+</table>	
+

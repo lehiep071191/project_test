@@ -4,10 +4,14 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 	def create	
-		@post = Post.new post_params
+		byebug
+		@book = Book.find_by id: params[:book_id]
+		@post = @book.posts.build (post_params)
+		@post.user = current_user
 		if @post.save!
 			flash[:success] = "post create"
-			redirect_to @post
+			byebug
+			redirect_to book_post_path(@post.book, @post.book)
 		else
 			render :new	
 		end	
@@ -16,7 +20,7 @@ class PostsController < ApplicationController
 	end	
 	private
 	def post_params
-		params.require(:post).permit(:user_id, :content, :title)
+		params.require(:post).permit(:user_id, :content, :title, :book_id)
 	end	
 	def set_post
 		@post = Post.find_by id: params[:id]
