@@ -1,0 +1,34 @@
+<tr id = "book-<%= book.id%>"> 
+	<td style = "border: 0.5px solid black;width: 100px">
+		<%= book.title %>
+	</td >
+	<td  style = "border: 0.5px solid black;width: 100px">
+		<%= book.author  %>
+	</td>
+	<td style = "border: 0.5px solid black;width: 100px">
+		<%= book.description %>
+	</td>
+	<td style = "border: 0.5px solid black;width: 100px">
+		<%= book.category %>
+	</td>
+	<td style = "border: 0.5px solid black;width: 100px">
+		<button class = "edit-book" data-id = "<%=book.id %>" > edit </button>
+	</td>
+</tr>
+<div class = "book-form-edit" style = "display: none;" id = "book-form-edit-<%= book.id%>">
+	<input placeholder="title" type="text" name="book[title]" id="book_title-<%= book.id%>"
+	value = "<%= book.title%>">
+	<input placeholder="author" type="text" name="book[author]" id="book_author-<%= book.id%>" value = "<%= book.author %>">
+	<textarea placeholder="description" name="book[description]" 				id="book-description-<%= book.id%>" value= "<%= book.description %>">
+	</textarea>
+	<select name="book[category]" id="book_category-<%= book.id%>">
+		<%= options_for_select(Book.categories) %>
+	</select>	
+
+	<input type="button" class="btn btn-success update-book"  
+	data-id ="<%= book.id %>">
+</div>
+<script type="text/javascript">
+
+	
+</script>

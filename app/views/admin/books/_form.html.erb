@@ -1,0 +1,7 @@
+<%= form_for [:admin, @book] do |f| %>
+	<%= f.text_field :title, placeholder: "title" %>
+	<%= f.text_field :author, placeholder: "author" %>
+	<%= f.text_area :description, placeholder: "description" %>
+	<%= f.select :category, options_for_select(Book.categories)  %>
+	<%= f.submit "create", class: "btn btn-success" %>
+<% end %>

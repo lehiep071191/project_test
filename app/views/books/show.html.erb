@@ -1,0 +1,10 @@
+<%= @book.title  %>
+<%= @book.category %>
+<%= @book.description %>
+<%= @book.author %>
+<%= link_to 'create_post', new_book_post_path(@book)  %><br>
+
+<% if @book.posts.any? %>
+	<%= render @posts %>
+<% end %>
+	
