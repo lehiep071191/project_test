@@ -4,19 +4,21 @@ class PostsController < ApplicationController
 		@post = Post.new
 	end
 	def create	
-		byebug
 		@book = Book.find_by id: params[:book_id]
 		@post = @book.posts.build (post_params)
 		@post.user = current_user
 		if @post.save!
 			flash[:success] = "post create"
-			byebug
-			redirect_to book_post_path(@post.book, @post.book)
+			redirect_to post_path(@post)
 		else
 			render :new	
 		end	
 	end
 	def show
+		if user_signed_in?
+	      @rate = current_user.rates.find_by rate_duty_id: @post.id
+	      @rates = @post.rates
+	    end
 	end	
 	private
 	def post_params

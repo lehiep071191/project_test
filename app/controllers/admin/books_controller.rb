@@ -19,7 +19,6 @@ class Admin::BooksController < Admin::ApplicationController
 	def edit
 	end
 	def update
-		byebug
 		if @book.update!(category: params[:category].to_i, title: params[:title],
 						 author: params[:author],  description: params[:description])
 			render json: {
