@@ -1,4 +1,7 @@
-<% Book.all.each do |book| %>
-
-	<%= link_to book.title, book %>
-<% end %>	
+<ul>
+	<% Book.all.each do |book| %>
+		<li>
+			<%= link_to book.title, book %>
+		</li>	
+	<% end %>	
+</ul>
