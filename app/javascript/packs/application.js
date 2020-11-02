@@ -13,6 +13,7 @@ import "bootstrap"
 import "packs/books.js"
 import "packs/ratebook.js"
 import "packs/ratepost.js"
+import "packs/comment.js"
 import "@fortawesome/fontawesome-free/css/all.css";
 
 
