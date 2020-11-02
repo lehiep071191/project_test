@@ -2,6 +2,7 @@
 <h3><%= @post.title %></h3><br>
 <%= @post.content.html_safe %><br>
 <%= @post.user.email %><br>
+
 <% if @rate.nil? %>
 	<input type="button" name="rate" class = "rates-post" id = "rate-post" value = "rate">
 <div class = "rating-post" style = "width: 300px; display: none" >
@@ -43,3 +44,20 @@
 	</p></center>
 </div>
 <% end %>
+<div class = "append-comment" style = "margin-top: 20px">
+		<% if @comments.any? %>
+
+		<% end %>
+	</div>
+	<div>
+		<input value="<%= @post.id %>" type="hidden" name="comment[cmt_duty_id]" id="comment_cmt_duty_id">
+		<input value="<%= current_user.id %>" type="hidden" name="comment[user_id]" id="comment_user_id">
+		<input value="<%= @post.class.name %>" type="hidden" name="comment[cmt_duty_type]" id="comment_cmt_duty_type">
+		<textarea class="form-control" name="comment[content]" id="comment_content"></textarea>
+		<input type="button" name="commit" value="comment" class="btn-success post-comment" data-disable-with="comment">
+	</div>
+	
+<script type="text/javascript">
+
+</script>
+

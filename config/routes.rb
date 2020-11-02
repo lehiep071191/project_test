@@ -11,10 +11,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create]
   end  
   resources :rates
-  resources :posts, only: [:show,:edit,:update,:index,:destroy] 
-
-
-
+  resources :posts, only: [:show,:edit,:update, :index,:destroy] 
+  resources :comments, only: [:create, :destroy]
   namespace :admin do
     resources :books
     resources :posts

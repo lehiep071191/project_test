@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 	before_action :set_post, only: [:show]
+	def index
+		@posts = @book.posts
+	end	
 	def new
 		@post = Post.new
 	end
@@ -15,6 +18,8 @@ class PostsController < ApplicationController
 		end	
 	end
 	def show
+		@comment = @post.comments.build
+		@comments = @post.comments
 		if user_signed_in?
 	      @rate = current_user.rates.find_by rate_duty_id: @post.id
 	      @rates = @post.rates
