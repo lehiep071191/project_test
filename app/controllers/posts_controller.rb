@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:show]
+	load_and_authorize_resource
+	before_action :set_post, only: [:show,:edit,:update]
 	def index
 		@posts = @book.posts
 	end	
@@ -24,6 +25,14 @@ class PostsController < ApplicationController
 	      @rate = current_user.rates.find_by rate_duty_id: @post.id
 	      @rates = @post.rates
 	    end
+	end	
+	def edit
+	end	
+	def update
+		if @post.update! post_params
+			flash[:danger] = "update!!"
+			redirect_to @post
+		end	
 	end	
 	private
 	def post_params

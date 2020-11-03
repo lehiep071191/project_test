@@ -3,6 +3,11 @@
 <%= @post.content.html_safe %><br>
 <%= @post.user.email %><br>
 <% if user_signed_in? %>
+	<% if current_user.current_user?(@post.user) %>
+		<%= link_to 'edit', edit_book_post_path(@post.book,@post) %>
+	<% end %>	
+<%= social_share_button_tag(@post.title) %>
+
 <% if @rate.nil? %>
 	<input type="button" name="rate" class = "rates-post" id = "rate-post" value = "rate">
 <div class = "rating-post" style = "width: 300px; display: none" >
