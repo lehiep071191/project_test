@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_02_020353) do
-
-  create_table "book_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "book_anc_desc_idx", unique: true
-    t.index ["descendant_id"], name: "book_desc_idx"
-  end
+ActiveRecord::Schema.define(version: 2020_11_01_145613) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -39,25 +31,13 @@ ActiveRecord::Schema.define(version: 2020_11_02_020353) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "comment_hierarchies", force: :cascade do |t|
-  end
-
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "cmt_duty_id"
     t.string "cmt_duty_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
     t.integer "user_id"
-  end
-
-  create_table "post_hierarchies", id: false, force: :cascade do |t|
-    t.integer "ancestor_id", null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations", null: false
-    t.index ["ancestor_id", "descendant_id", "generations"], name: "post_anc_desc_idx", unique: true
-    t.index ["descendant_id"], name: "post_desc_idx"
   end
 
   create_table "posts", force: :cascade do |t|

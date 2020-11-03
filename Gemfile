@@ -61,3 +61,4 @@ gem 'ckeditor'
 gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "closure_tree"
+gem 'active_storage_validations'
