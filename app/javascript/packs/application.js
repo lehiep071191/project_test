@@ -9,12 +9,15 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require('admin-lte');
+
 import "bootstrap"
 import "packs/books.js"
 import "packs/ratebook.js"
 import "packs/ratepost.js"
 import "packs/comment.js"
 import "@fortawesome/fontawesome-free/css/all.css";
+import '../stylesheets/application';
 
 
 //= require jquery3
