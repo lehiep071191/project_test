@@ -30,6 +30,7 @@ document.addEventListener("turbolinks:load", () => {
 
 //= require ckeditor/init
 //= javascript_include_tag Ckeditor.cdn_url
+//= require social-share-button
 
 
 

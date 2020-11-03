@@ -8,10 +8,10 @@ Rails.application.routes.draw do
     delete "signout" => "devise/sessions#destroy"
   end
   resources :books do 
-    resources :posts, only: [:new, :create]
+    resources :posts, only: [:new, :create, :edit,:update]
   end  
   resources :rates
-  resources :posts, only: [:show,:edit,:update, :index,:destroy] 
+  resources :posts, only: [:show, :index,:destroy] 
   resources :comments, only: [:create, :destroy]
   namespace :admin do
     resources :books

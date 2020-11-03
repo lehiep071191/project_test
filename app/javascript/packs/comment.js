@@ -14,7 +14,8 @@ $(document).on('turbolinks:load', function(){
 			},
 
 			success: function(data){
-				$('.append-comment').append(data.data_comment)
+				$('.append-comment').append(data.data_comment);
+				$('#comment_content').val("");
 			}
 		})
 	})
