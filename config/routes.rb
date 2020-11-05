@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'activities/index'
   mount Ckeditor::Engine => '/ckeditor'
   root 'pages#index'		
   devise_for :users
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   resources :books do 
     resources :posts, only: [:new, :create, :edit,:update]
   end  
+  resources :activities
   resources :rates
   resources :posts, only: [:show, :index,:destroy] 
   resources :comments, only: [:create, :destroy]

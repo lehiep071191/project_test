@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 	before_action :find_user, only: [:show, :edit, :update]
 	before_action :correct_user, only: [:edit, :update]
+	
 	def show
 		@post = current_user.posts
 	end

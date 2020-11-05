@@ -34,4 +34,4 @@ default: &default
 
 development:
   <<: *default
-  database: demo_db
+  database: project_test
