@@ -5,7 +5,7 @@ class BooksController < ApplicationController
 		@post = @book.posts.build
 		@posts = @book.posts
 		 @supports = Supports::Book.new @book
-		@comment = Comment.new
+		@comment = current_user.comments.build
 		@comments = @book.comments
 		if user_signed_in?
 	      @rate = current_user.rates.find_by rate_duty_id: @book.id
