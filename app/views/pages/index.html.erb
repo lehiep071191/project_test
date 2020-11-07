@@ -1,14 +1,7 @@
-<% if user_signed_in? %>
-	<% @activities.each do |activity| %>
-		<div class = "activity">
-			<% if activity.owner.present? && activity.trackable.present? %>
-			 <span class="glyphicon"><%=  activity.owner.fullname  %></span>
-			 commented to: <%= link_to activity.trackable.cmt_duty.title, 
-				activity.trackable.cmt_duty %>
-			<% end %>	
-		</div>
-	<% end %>	
-<% end %>
+<!--  -->
+<div id="notifications">
+</div>
+
 <div class="center jumbotron">
 
 	<h2>

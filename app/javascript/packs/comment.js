@@ -1,6 +1,5 @@
-$(document).on('turbolinks:load', function(){
+$(document).ready(function(){
 	$(document).on('click', '.post-comment', function(){
-		debugger
 		$.ajax({
 			url: '/comments',
 			method: 'POST',
@@ -17,6 +16,7 @@ $(document).on('turbolinks:load', function(){
 				$('.append-comment').append(data.data_comment);
 				$('#comment_content').val("");
 			}
+
 		})
 	})
 })	

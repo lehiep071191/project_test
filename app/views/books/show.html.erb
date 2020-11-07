@@ -54,23 +54,14 @@
 			<%= render @comments %>
 		<% end %>
 	</div>
-	<% if user_signed_in? %>
 	<% if user_signed_in? %>	
-	<%= form_for @comment, remote: true do |f| %>
-		<%= f.hidden_field :cmt_duty_id, value: @book.id %>
-		<%= f.hidden_field :cmt_duty_type, value: @book.class.name %>
-		<%= f.hidden_field :user_id, value: current_user.id %>
-		<%= f.text_area :content, class: "form-control"  %>
-		<%= f.submit 'comment', class: "btn btn-success" %>
-	<% end %>
-<% end %>	
-<!-- 		<div>
+		<div>
 			<input value="<%= @book.id %>" type="hidden" name="comment[cmt_duty_id]" id="comment_cmt_duty_id">
 			<input value="<%= current_user.id %>" type="hidden" name="comment[user_id]" id="comment_user_id">
 			<input value="<%= @book.class.name %>" type="hidden" name="comment[cmt_duty_type]" id="comment_cmt_duty_type">
 			<textarea class="form-control" name="comment[content]" id="comment_content"></textarea>
 			<input type="button" name="commit" value="comment" class="btn-success post-comment" data-disable-with="comment">
-		</div> -->
+		</div>
 	<% end %>
 </div>
 

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'activities/index'
   mount Ckeditor::Engine => '/ckeditor'
+  mount ActionCable.server => '/cable'
   root 'pages#index'		
   devise_for :users
   as :user do
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
   resources :activities
   resources :rates
   resources :posts, only: [:show, :index,:destroy] 
-  resources :comments, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy, :index]
   namespace :admin do
     resources :books
     resources :posts
