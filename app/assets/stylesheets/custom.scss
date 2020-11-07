@@ -40,14 +40,14 @@ p {
 	float: left;
 	margin-right: 10px;
 	font-size: 1.7em;
-	color: #fff;
+	color: #7FFFD4;
 	text-transform: uppercase;
 	letter-spacing: -1px;
 	padding-top: 9px;
 	font-weight: bold;
 }
 #logo:hover {
-	color: #fff;
+	color: #A52A2A;
 	text-decoration: none;
 }
 /* footer */
@@ -108,4 +108,30 @@ label.star:hover { transform: rotate(-15deg) scale(1.3); }
 label.star:before {
   content: '\f006';
   font-family: FontAwesome;
+}
+
+.hideMe {
+    -moz-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 5s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
 }

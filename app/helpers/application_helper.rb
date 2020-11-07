@@ -23,6 +23,8 @@ module ApplicationHelper
 		    comments_tree_for(nested_comments, cmt_duty, Comment.new), class: "replies"
 		end
 	end
-
+	def load_activity
+	 @activities = PublicActivity::Activity
+	end	
 	
 end

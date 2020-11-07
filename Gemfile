@@ -65,4 +65,4 @@ gem 'active_storage_validations'
 gem 'cancancan'
 gem 'social-share-button'
 gem 'public_activity'
-gem 'coffee-rails'
+gem "redis"

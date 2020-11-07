@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :rates, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :image_attached
+  has_many :notifications, as: :recipient
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 

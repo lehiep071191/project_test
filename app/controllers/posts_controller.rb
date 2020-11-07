@@ -19,7 +19,9 @@ class PostsController < ApplicationController
 		end	
 	end
 	def show
-		@comment = current_user.comments.build
+		if user_signed_in?
+			@comment = current_user.comments.build
+		end 
 		@comments = @post.comments
 		if user_signed_in?
 	      @rate = current_user.rates.find_by rate_duty_id: @post.id
