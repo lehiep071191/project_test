@@ -1,35 +1,48 @@
 class Admin::BooksController < Admin::ApplicationController
-	before_action :set_book, only: [:update,:show]
+	before_action :set_book, only: [:update,:show, :edit]
 	def index
 		@books = Book.all
 	end		
 	def new
 		@book = Book.new
+		@chapter = @book.chapters.build
 	end	
 	def create
-		@book = Book.new(category: params[:category].to_i, title: params[:title], 
-						author: params[:author], description: params[:description])
+		byebug
+		# @book = Book.new(category: params[:category].to_i, title: params[:title], 
+		# 				author: params[:author], description: params[:description])
+		bpr = book_params.merge(category: params[:category].to_i)
+		@book = Book.new bpr
 		if @book.save!
-			render json: {
-				data_book: render_to_string(@book)
-			}, status: :ok
+			redirect_to admin_books_path
+			# render json: {
+			# 	data_book: render_to_string(@book)
+			# }, status: :ok
 
 		end		
+	end	
+	def show
+		@chapter = Chapter.new 
+		@chapters = @book.chapters
 	end	
 	def edit
 	end
 	def update
-		if @book.update!(category: params[:category].to_i, title: params[:title],
-						 author: params[:author],  description: params[:description])
-			render json: {
-				data_bookupdate: render_to_string(@book)
-			}, status: :ok	
+		bpr = book_params.merge(category: params[:category].to_i)
+		if @book.update! bpr
+			redirect_to admin_book_path @book
 		end	
+		# if @book.update!(category: params[:category].to_i, title: params[:title],
+		# 				 author: params[:author],  description: params[:description])
+		# 	render json: {
+		# 		data_bookupdate: render_to_string(@book)
+		# 	}, status: :ok	
+		# end	
 	end	
 
 	private
 	def book_params
-		params.require(:book).permit(:title, :author, :description, :category)
+		params.require(:book).permit(:title, :author, :description, :category, chapters_attributes: [:title, :body, :chapter_number, :_destroy])
 	end	
 	def set_book
 		@book = Book.find_by id: params[:id]

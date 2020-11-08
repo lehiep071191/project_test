@@ -1,16 +1,5 @@
 <center> <h1>AllBook</h1></center>
-<%= button_tag 'create book', class: "btn btn-primary book-new" %>
-<div class = "book-form" style = "display: none;">
-	<input placeholder="title" type="text" name="book[title]" id="book_title">
-	<input placeholder="author" type="text" name="book[author]" id="book_author">
-	<textarea placeholder="description" name="book[description]" id="book_description"></textarea>
-	<select name="book[category]" id="book_category">
-		<%= options_for_select(Book.categories) %>
-	</select>	
-
-	<input type="button" class="btn btn-success create-book" >
-</div>	
-
+<%= link_to 'create-book', new_admin_book_path , class: "btn btn-new" %>
 <table style = "border: 0.5px solid black; text-align: center, font-size: 14px;">
 	<tr style = "border: 0.5px solid black;" id = "th">
 		<th style = "border: 0.5px solid black;width: 100px">

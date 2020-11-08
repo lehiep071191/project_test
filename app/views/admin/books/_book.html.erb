@@ -1,6 +1,6 @@
 <tr id = "book-<%= book.id%>"> 
 	<td style = "border: 0.5px solid black;width: 100px">
-		<%= book.title %>
+		<%= link_to book.title, admin_book_path(book) %>
 	</td >
 	<td  style = "border: 0.5px solid black;width: 100px">
 		<%= book.author  %>
@@ -12,10 +12,11 @@
 		<%= book.category %>
 	</td>
 	<td style = "border: 0.5px solid black;width: 100px">
-		<button class = "edit-book" data-id = "<%=book.id %>" > edit </button>
+		<!-- <button class = "edit-book" data-id = "<%=book.id %>" > edit </button> -->
+		<%= link_to 'edit', edit_admin_book_path(book), class: 'btn-success' %>
 	</td>
 </tr>
-<div class = "book-form-edit" style = "display: none;" id = "book-form-edit-<%= book.id%>">
+<!-- <div class = "book-form-edit" style = "display: none;" id = "book-form-edit-<%= book.id%>">
 	<input placeholder="title" type="text" name="book[title]" id="book_title-<%= book.id%>"
 	value = "<%= book.title%>">
 	<input placeholder="author" type="text" name="book[author]" id="book_author-<%= book.id%>" value = "<%= book.author %>">
@@ -27,7 +28,7 @@
 
 	<input type="button" class="btn btn-success update-book"  
 	data-id ="<%= book.id %>">
-</div>
+</div> -->
 <script type="text/javascript">
 
 	

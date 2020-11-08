@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
 	has_many :posts
+	has_many :chapters
+	accepts_nested_attributes_for :chapters, reject_if: :all_blank, allow_destroy: true
 	has_many :rates, as: :rate_duty, dependent: :destroy
 	has_many :comments, as: :cmt_duty, dependent: :destroy
 	validates :description, presence: true, length: { maximum: 140 }

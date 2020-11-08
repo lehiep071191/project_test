@@ -1,0 +1,4 @@
+<p id = "chapter-ajax<%= chapter.id%>">
+ 	<%= link_to chapter.title, admin_chapter_path(chapter) %>
+ 	<%= link_to 'delete', admin_chapter_path(chapter), method: :delete, remote: true %>
+</p>
