@@ -1,0 +1,7 @@
+<%= form_for [:admin, @chapter] do |f| %>
+	<%= javascript_include_tag Ckeditor.cdn_url %>
+	<%= f.text_field :title, class: "form-control" %>
+	<%= f.cktext_area :body, class: "ckeditor" %>
+	<%= f.number_field :chapter_number %>
+	<%= f.submit 'update', class: "btn btn-success" %>
+<% end %>

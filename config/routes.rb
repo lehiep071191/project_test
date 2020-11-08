@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :posts, only: [:show, :index,:destroy] 
   resources :comments, only: [:create, :destroy, :index]
   namespace :admin do
-    resources :books
+    resources :books 
+    resources :chapters
     resources :posts
   end  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

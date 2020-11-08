@@ -66,3 +66,4 @@ gem 'cancancan'
 gem 'social-share-button'
 gem 'public_activity'
 gem "redis"
+gem "cocoon"

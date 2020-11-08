@@ -1,7 +1,23 @@
 <%= form_for [:admin, @book] do |f| %>
-	<%= f.text_field :title, placeholder: "title" %>
-	<%= f.text_field :author, placeholder: "author" %>
-	<%= f.text_area :description, placeholder: "description" %>
-	<%= f.select :category, options_for_select(Book.categories)  %>
+	<p>
+		<%= f.text_field :title, placeholder: "title book" %>
+	</p>
+	<p>
+		<%= f.text_field :author, placeholder: "author" %>
+	</p>
+	<p>
+		<%= f.text_area :description, placeholder: "description" %>
+	</p>
+	<p>
+			<%= f.select :category, options_for_select(Book.categories)  %>
+	</p>
+	
+	<%= f.fields_for :chapters do |chapter| %>
+		<%= render 'chapter_fields' , f: chapter %>
+	<% end %>
+	 <div class="links">
+        <%= link_to_add_association 'add chapter', f, :chapters,  association_insertion_node: '#chapters',  
+      		association_insertion_method: :appen %>
+      </div>
 	<%= f.submit "create", class: "btn btn-success" %>
 <% end %>

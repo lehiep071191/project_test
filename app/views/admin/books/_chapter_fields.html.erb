@@ -1,0 +1,10 @@
+<div class="nested-fields">
+	<h3> add chapter</h3>
+	<%= javascript_include_tag Ckeditor.cdn_url %>
+	<p><%= f.text_field :title, placeholder: "title chapter" %></p>
+	<p><%= f.cktext_area :body, placeholder: "body", class: "ckeditor" %></p>
+	<p><%= f.number_field :chapter_number %></p>
+	<p><%= f.check_box :_destroy %></p>
+	<p><%= link_to_remove_association "remove", f %></p>
+<div class="nested-fields">
+

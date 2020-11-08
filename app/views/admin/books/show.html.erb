@@ -1,0 +1,18 @@
+ <p><%= @book.title %></p>
+ <p><%= @book.author%></p>
+ <p><%= @book.description %></p>
+ <p><%= @book.category %></p>
+ <%= link_to 'edit', edit_admin_book_path(@book)  %>
+ <div class = "new-chapter">
+ 	<%= form_for [:admin, @chapter], remote: true do |f| %>
+	 	<%= f.hidden_field :book_id, value: @book.id %>
+		<%= javascript_include_tag Ckeditor.cdn_url %>
+		<%= f.text_field :title, class: "form-control", id: "ck-text" %>
+		<%= f.cktext_area :body, class: "ckeditor" %>
+		<%= f.number_field :chapter_number %>
+	<%= f.submit 'update', class: "btn btn-success" %>
+<% end %>
+ </div>	
+ <div class = 'append-chapter'>
+ 	<%= render @chapters %>
+ </div>

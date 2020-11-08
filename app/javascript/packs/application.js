@@ -11,14 +11,16 @@ require("channels")
 require("jquery")
 require('admin-lte');
 
-import "bootstrap"
-import "packs/books.js"
-import "packs/ratebook.js"
-import "packs/ratepost.js"
-import "packs/comment.js"
+import "bootstrap";
+import "packs/books.js";
+import "packs/ratebook.js";
+import "packs/ratepost.js";
+import "packs/comment.js";
 import "@fortawesome/fontawesome-free/css/all.css";
 import '../stylesheets/application';
-//= require jquery3
+import 'cocoon-js';
+
+
 
 
 document.addEventListener("turbolinks:load", () => {
@@ -32,6 +34,7 @@ document.addEventListener("turbolinks:load", () => {
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
