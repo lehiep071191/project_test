@@ -2,6 +2,10 @@ class Admin::BooksController < Admin::ApplicationController
 	before_action :set_book, only: [:update,:show, :edit, :destroy]
 	def index
 		@pagy, @books = pagy(Book.all, items: 10)
+		respond_to do |format|
+			format.html
+			format.csv{ send_data @books.to_csv}
+		end	
 	end		
 	def new
 		@book = Book.new
@@ -46,6 +50,7 @@ class Admin::BooksController < Admin::ApplicationController
 			format.js
 		end	
 	end	
+
 	private
 	def book_params
 		params.require(:book).permit(:title, :author, :description, :category, chapters_attributes: [:title, :body, :chapter_number, :_destroy])

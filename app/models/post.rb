@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+	acts_as_paranoid
 	belongs_to :user
 	belongs_to :book
 	has_many :rates, as: :rate_duty, dependent: :destroy

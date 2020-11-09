@@ -1,8 +1,9 @@
-<ul>
-	<% Book.all.each do |book| %>
-		<li>
-			<%= link_to book.title, book %>
-		</li>	
-	<% end %>	
-</ul>
 
+ <div class= "container-fluid">
+         <h4>Complex Gallery</h4>
+         <div class= "row d-inline-flex">
+            <!-- Gallery Item 1 -->
+            <%= render @books %>
+        
+         </div>
+      </div>

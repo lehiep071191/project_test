@@ -4,13 +4,11 @@ class Admin::ChaptersController < Admin::ApplicationController
 	def create
 		@chapter = Chapter.new(chapter_params)
 		if @chapter.save!
-			byebug
 			respond_to do |format|
 				format.html{ redirect_to admin_book_path(@chapter.book) }
 				format.js
 			end	
-		end	
-				
+		end				
 	end		
 	def edit 
 	end	
@@ -22,10 +20,6 @@ class Admin::ChaptersController < Admin::ApplicationController
 	end	
 	def destroy
 		@chapter.destroy
-			respond_to do |format|
-				format.html{ redirect_to admin_book_path(@chapter.book)}
-				format.js
-			end	
 	end	
 	private 
 	def chapter_params

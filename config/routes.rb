@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'restores/inex'
+  get 'restores/new'
+  get 'restores/show'
   get 'activities/index'
   mount Ckeditor::Engine => '/ckeditor'
   mount ActionCable.server => '/cable'
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
     resources :books 
     resources :chapters
     resources :posts
+    resources :restores
   end  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -3,6 +3,7 @@
  <p><%= @book.description %></p>
  <p><%= @book.category %></p>
  <%= link_to 'edit', edit_admin_book_path(@book)  %>
+
  <div class = "new-chapter">
  	<%= form_for [:admin, @chapter], remote: true do |f| %>
 	 	<%= f.hidden_field :book_id, value: @book.id %>

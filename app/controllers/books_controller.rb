@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
 	before_action :set_book, only: [:show]
-
+	def index
+		@pagy, @books = pagy(Book.all, items: 9)
+	end	
 	def show
 		@post = @book.posts.build
 		@posts = @book.posts

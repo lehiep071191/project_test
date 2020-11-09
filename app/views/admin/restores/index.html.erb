@@ -1,0 +1,8 @@
+<% @restores.each do |book| %>
+	<p id = "restore-<%= book.id %>" >
+		<%= book.title %>
+		<%= link_to 'restore', admin_restore_path(book.id), method: :patch, class: "restore-book",
+		 id: "restore-book#{book.id}", data: {id: book.id}, remote: true %>
+	</p>
+<% end %>
+
