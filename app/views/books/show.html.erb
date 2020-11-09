@@ -1,11 +1,25 @@
 <div class = "container">
-<div style = "width: 50%; float:left">
+<div style = "width: 75%; float:left">
 	<p><%= @book.title  %></p>
 	<p><%= @book.author %></p>
 	<p><%= @book.description %></p>
 	<p> <%= @book.category %></p>
+	<button id = "select-chapter" class = "btn btn-danger">Chọn Chương</button>
+	<div class = "list-chapter" style = "display: none">
+		<% @lists.each do |chapter| %>
+		<p style = "font-size: 13px" >
+			<button  class ="list-select"  data-id = "<%=chapter.id%>"><%= chapter.title %></button>
+			<input type ="hidden" value = "<%= chapter.title %>" id = "list-select-<%= chapter.id %>">
+		</p>	
+		<% end %>
+		<%= will_paginate @lists %>
+	</div>
 	<% if user_signed_in? %>
 	<%= link_to 'create_post', new_book_post_path(@book), class: "btn btn-success"  %><br>
+		<div class = "container body-chapter">
+			<%= render @chapters %>
+		</div>
+		<%= will_paginate @chapters,inner_window: 0, outer_window: 0 %>
 		<% if @rate.nil? %>
 			<input type="button" name="rate" class = "rates-book btn-success" id = "rate-book" value = "rate">
 		<div class = "rating-book" style = "width: 300px; display: none" >
@@ -63,14 +77,24 @@
 			<input type="button" name="commit" value="comment" class="btn-success post-comment" data-disable-with="comment">
 		</div>
 	<% end %>
+
 </div>
 
-<div style = "width: 45%; float:left">
+<div style = "width: 25%; float:left">
 	<% if @posts.any? %>
 		<%= render @posts %>
 	<% end %>
 </div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#select-chapter').click(function(){
+			$('.list-chapter').toggle()
+		})
+
+	});
+</script>
 
 
 	

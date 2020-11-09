@@ -4,7 +4,9 @@ class BooksController < ApplicationController
 	def show
 		@post = @book.posts.build
 		@posts = @book.posts
-		 @supports = Supports::Book.new @book
+		@lists = @book.chapters.paginate(page: params[:page], per_page: 20).order_by_chapter
+		@chapters = @book.chapters.paginate(page: params[:page], per_page: 1).order_by_chapter
+		@supports = Supports::Book.new @book
 		@comment = Comment.new
 		@comments = @book.comments
 		if user_signed_in?

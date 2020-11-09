@@ -16,6 +16,7 @@ import "packs/books.js";
 import "packs/ratebook.js";
 import "packs/ratepost.js";
 import "packs/comment.js";
+import "packs/chapter.js"
 import "@fortawesome/fontawesome-free/css/all.css";
 import '../stylesheets/application';
 import 'cocoon-js';

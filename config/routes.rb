@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   resources :books do 
     resources :posts, only: [:new, :create, :edit,:update]
+    resources :chapters, only: [:show, :index]
   end  
   resources :activities
   resources :rates
