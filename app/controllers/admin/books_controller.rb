@@ -1,5 +1,5 @@
 class Admin::BooksController < Admin::ApplicationController
-	before_action :set_book, only: [:update,:show, :edit]
+	before_action :set_book, only: [:update,:show, :edit, :destroy]
 	def index
 		@pagy, @books = pagy(Book.all, items: 10)
 	end		
@@ -39,7 +39,13 @@ class Admin::BooksController < Admin::ApplicationController
 		# 	}, status: :ok	
 		# end	
 	end	
-
+	def destroy
+		@book.destroy
+		respond_to do |format|
+			format.html{ redirect_to admin_books_path}
+			format.js
+		end	
+	end	
 	private
 	def book_params
 		params.require(:book).permit(:title, :author, :description, :category, chapters_attributes: [:title, :body, :chapter_number, :_destroy])

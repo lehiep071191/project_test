@@ -150,6 +150,8 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pagy (3.9.0)
+    paranoia (2.4.2)
+      activerecord (>= 4.0, < 6.1)
     public_activity (1.6.4)
       actionpack (>= 3.0.0)
       activerecord (>= 3.0)
@@ -282,6 +284,7 @@ DEPENDENCIES
   mini_magick
   mysql2
   pagy
+  paranoia
   public_activity
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)

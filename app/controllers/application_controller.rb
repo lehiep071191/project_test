@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
    @activities = PublicActivity::Activity
   end 
 
+
   protected
   
   def configure_permitted_parameters
