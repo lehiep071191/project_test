@@ -69,4 +69,5 @@ gem "redis"
 gem "cocoon"
 gem "pagy"
 gem 'will_paginate'
+gem "paranoia"
 

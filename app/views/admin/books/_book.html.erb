@@ -15,6 +15,9 @@
 		<!-- <button class = "edit-book" data-id = "<%=book.id %>" > edit </button> -->
 		<%= link_to 'edit', edit_admin_book_path(book), class: 'btn-success' %>
 	</td>
+	<td>
+		<%= link_to 'delete', admin_book_path(book), method: :delete, remote: true %>
+	</td>
 </tr>
 <!-- <div class = "book-form-edit" style = "display: none;" id = "book-form-edit-<%= book.id%>">
 	<input placeholder="title" type="text" name="book[title]" id="book_title-<%= book.id%>"
