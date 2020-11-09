@@ -1,7 +1,7 @@
 class Admin::BooksController < Admin::ApplicationController
 	before_action :set_book, only: [:update,:show, :edit]
 	def index
-		@books = Book.all
+		@pagy, @books = pagy(Book.all, items: 10)
 	end		
 	def new
 		@book = Book.new

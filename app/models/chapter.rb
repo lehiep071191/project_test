@@ -1,3 +1,7 @@
 class Chapter < ApplicationRecord
-	belongs_to :book
+	belongs_to :book 
+	validates :title, presence: true
+	validates :body, presence: true
+	validates :chapter_number, presence: true
+	scope :order_by_chapter,->{ order(chapter_number: :asc) }
 end
