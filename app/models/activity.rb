@@ -1,8 +1,4 @@
 class Activity < PublicActivity::Activity
-
-	before_save :check_hello
-	private
-	def check_hello
-		byebug
-	end
+	after_create_commit {
+	ActivityBroadcastJob.perform_later(@activities.count, self)}
 end	

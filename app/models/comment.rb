@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
 	include PublicActivity::Model
+	acts_as_paranoid
 	tracked owner: ->(controller, model){controller && controller.current_user}
 	after_create_commit {CommentBroadcastJob.perform_later(Comment.count, self)}
 	belongs_to :user

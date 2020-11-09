@@ -21,14 +21,6 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import '../stylesheets/application';
 import 'cocoon-js';
 
-
-
-
-document.addEventListener("turbolinks:load", () => {
-  $('[data-toggle="tooltip"]').tooltip()
-});
-
-
 //= require ckeditor/init
 //= javascript_include_tag Ckeditor.cdn_url
 //= require social-share-button
