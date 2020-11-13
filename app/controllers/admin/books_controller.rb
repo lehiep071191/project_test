@@ -53,7 +53,7 @@ class Admin::BooksController < Admin::ApplicationController
 
 	private
 	def book_params
-		params.require(:book).permit(:title, :author, :description, :category, chapters_attributes: [:title, :body, :chapter_number, :_destroy])
+		params.require(:book).permit(:title, :author, :description, :category, :count_view, chapters_attributes: [:title, :body, :chapter_number, :_destroy])
 	end	
 	def set_book
 		@book = Book.find_by id: params[:id]

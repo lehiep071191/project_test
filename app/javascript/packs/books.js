@@ -84,5 +84,25 @@ $(document).on('turbolinks:load', function(){
 	  });
 	});
 
-});
 
+});
+$(document).ready(function(){
+	$('.click-in-book').on('click', function(){
+		var book_id = $(this).data('id');
+		var count_view = parseInt($('#count-view-'+book_id).val());
+		$.ajax({
+			url: '/books/' + book_id,
+			method: 'PUT',
+			dataType: 'json',
+			data: {
+				authenticity_token: $('[name="csrf-token"]')[0].content,
+				count_view: count_view += 1
+			},
+			success: function(data){
+				debugger
+				$('#count-view-'+book_id).replaceWith(data.data_view)
+			} 
+		})
+	})
+	
+});

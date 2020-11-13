@@ -10,9 +10,12 @@
 
 	   <div class="d-flex flex-column text-center ">
 	      <div>
-	      	<%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "80%" ), book  %>
-	      <div class = "centered"><%= link_to book.title, book %></div>
+	      	<%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "80%" ), book_path(book), id: "count-#{book.id}", class: "click-in-book", data: {id: "#{book.id}"} %>
+	      	<input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-<%=book.id %>">
+	      <div class = ""><%= book.title %></div>
+	      <div>Lượt xem: <%= book.count_view %></div>
 	      </div>
 	   </div>
 
 </div>
+
