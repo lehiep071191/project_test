@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 		if user_signed_in?
 			@comment = current_user.comments.build
 		end 
-		@comments = @post.comments
+		@comments = @post.comments.includes([:user])
 		if user_signed_in?
 	      @rate = current_user.rates.find_by rate_duty_id: @post.id
 	      @rates = @post.rates

@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 		@chapters = @book.chapters.paginate(page: params[:page], per_page: 1).order_by_chapter
 		@supports = Supports::Book.new @book
 		@comment = Comment.new
-		@comments = @book.comments
+		@comments = @book.comments.includes([:user])
 		if user_signed_in?
 	      @rate = current_user.rates.find_by rate_duty_id: @book.id
 	      @rates = @book.rates

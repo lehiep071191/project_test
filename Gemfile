@@ -71,4 +71,5 @@ gem "pagy"
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem "paranoia"
+gem 'bullet', group: 'development'
 
