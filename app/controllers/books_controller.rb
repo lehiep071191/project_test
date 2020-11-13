@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :set_book, only: [:show]
+	before_action :set_book, only: [:show,:update]
 	def index
 		# @pagy, @books = pagy(Book.all, items: 9)
 		@pagy, @books = pagy(Book.send(params["category"]), items:16)
@@ -20,6 +20,13 @@ class BooksController < ApplicationController
 	      @rates = @book.rates
 	    end
 
+	end	
+	def update
+		@book.update! count_view: params[:count_view]
+		render json: {
+			data_view: render_to_string(@book)
+		}, status: :ok
+		redirect_to book_path(@book)
 	end	
 	private
 	def set_book
