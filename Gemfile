@@ -69,5 +69,6 @@ gem "redis"
 gem "cocoon"
 gem "pagy"
 gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 gem "paranoia"
 

@@ -1,14 +1,33 @@
+<style type="text/css">
+	.column {
+  float: left;
+  width: 25%;
+  text-align: center;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
 <footer class="footer">
-	<small>
-	The <a href="https://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-	by <a href="https://www.michaelhartl.com/">Michael Hartl</a>
-	</small>
-	<nav>
-	<ul>
-	<li><%= link_to "About",
-	'#' %></li>
-	<li><%= link_to "Contact", '#' %></li>
-	<li><a href="https://news.railstutorial.org/">News</a></li>
-	</ul>
-	</nav>
+	<div class = "container" >
+			<div class="row">
+			  <div class="column">
+			  	<%= link_to 'contact', "#" %>
+			  </div>
+			  <div class="column">
+			  	<%= link_to 'contact', "#" %>
+			  </div>
+			  <div class="column">
+			  	<%= link_to 'contact', "#" %>
+			  </div>
+			  <div class="column">
+			  	<%= link_to 'contact', "#" %>
+			  </div>
+			</div>
+
+ 
 </footer>

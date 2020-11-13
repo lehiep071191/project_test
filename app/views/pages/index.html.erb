@@ -1,12 +1,54 @@
-<!--  -->
-<div id="notifications">
-</div>
+<!-- <div style = "display: none">
+<iframe width="1280" height="720" src="https://www.youtube.com/embed/cJW1aBqWTqU?autoplay=1" frameborder="0" allow="accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-<div class="center jumbotron">
+</div> -->
+   <center><h1 style="color: red">All Book</h1></center>
+   <div class = "row">
+     <div class ="col-sm-3 "> 
+      <center> Category</center>
+             <div class="panel-group category-products" id="accordian" style = " cursor: pointer;"><!--category-productsr-->
+            <% Book.categories.keys.each_with_index do |t| %>
+              <div class="panel panel-default" >
+                <a href = "/books?category=<%=t %>">
+                  <div class="panel-heading">
+                    <h4 class="panel-title category-click" data-id="<%= t %>">
+                      <%=t %>
+                    </h4>
+                  </div>
+                </a>
+              </div>
+            <% end %>
+          </div><!--/category-products-->
+          </div>
+      <div class = "col-sm-9">      
+        <div class="row row-cols-4">
+          <%= render @books %>
+          <%= render partial: 'shared/pagination', locals: {pagy: @pagy} if @pagy.pages > 1 %>  
+        </div>
+        <div class >
+          <% Book.limit(10).each do |book| %>
 
-	<h2>
-		Xin Chao 500 anh em den voi trang web cua toi 
-		toi la le hiep
-	</h2>	
-	<%= link_to 'all book', books_path, class: "btn btn-primary" %>
-</div>
+          <% end %>
+        </div>
+      </div>  
+    </div>  
+<!--   
+ 
+  <script type="text/javascript">
+  		$(document).ready(function(){
+  			$(document).on('click', '.category-click', function(){
+  				var page_id = $(this).data('id');
+  				$.ajax({
+  					type: 'get',
+  					url: '/books',
+  					data: {
+  						category: page_id
+
+  					},
+  					success: function(data){
+  						$('#home').html(data.data_books);
+  					}
+  				})
+  			})
+  		})
+  </script> -->

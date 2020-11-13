@@ -2,7 +2,8 @@
 <html>
   <head>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
- 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title><%= yield(:title) %> | Le Hiep Sample App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,17 +14,19 @@
 
   </head>
 
-  <body class = "text-xl">
+  <body class = "text-lg" style = "background-color: #F0FFFF;">
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
-    <div class = "container">
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-    </div>
-   
 
+
+    <div class = "container" >
+      <div class= "container-fluid " style = "margin-top: 90px;  ">      
+             <%= yield %>    
+      </div>     
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

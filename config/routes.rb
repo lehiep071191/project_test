@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :books do 
     resources :posts, only: [:new, :create, :edit,:update]
     resources :chapters, only: [:show, :index]
-  end  
+  end 
+  resources :users 
   resources :activities
   resources :rates
   resources :posts, only: [:show, :index,:destroy] 
@@ -26,5 +27,6 @@ Rails.application.routes.draw do
     resources :posts
     resources :restores
   end  
+  get 'admin/home', to: 'admin/pages#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
