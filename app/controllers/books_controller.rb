@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
 	before_action :set_book, only: [:show]
 	def index
-		@pagy, @books = pagy(Book.all, items: 9)
+		# @pagy, @books = pagy(Book.all, items: 9)
+		@pagy, @books = pagy(Book.send(params["category"]), items:16)
+		# render json: {
+		# 	data_books: render_to_string(@books),
+		# }, status: :ok
 	end	
 	def show
 		@post = @book.posts.build

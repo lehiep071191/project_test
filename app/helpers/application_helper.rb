@@ -11,21 +11,19 @@ module ApplicationHelper
 	def options_for_book
 		Book.all.pluck( :title,:id)
 	end	
-	def comments_tree_for comments, cmt_duty, comment_new
-		safe_join(comments.map do |comment, nested_comments|
-		  render(comment, cmt_duty: cmt_duty,
-		    comment_new: comment_new) + tree(nested_comments, cmt_duty)
-		end)
-	end
-
-	def tree nested_comments, cmt_duty
-		unless nested_comments.empty?
-		  content_tag :div,
-		    comments_tree_for(nested_comments, cmt_duty, Comment.new), class: "replies"
-		end
-	end
+	def next_link
+		@book.chapters.paginate(page: params[:page], per_page: 1)
+	end	
 	def load_activity
 	 @activities = PublicActivity::Activity
 	end	
+	def pagination_options
+	  {
+	    renderer: DropPagination::LinkRenderer,
+	    previous_label: '<i class="icon icon-hand-left"></i>',
+	    next_label: '<i class="icon icon-hand-right"></i>',
+	    class: 'pagination row-fluid',
+	  }
+	end
 	
 end

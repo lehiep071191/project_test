@@ -1,0 +1,86 @@
+<style>
+<style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropup {
+  position: relative;
+  display: inline-block;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.dropup-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropup-content a:hover {background-color: #ccc}
+
+
+
+.dropup:hover .dropbtn {
+  background-color: #2980B9;
+}
+.not-active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}
+</style>
+<div class = "container">
+	<div class = "body-chapter">
+	<center>
+		<h1><%= @chapter.book.title %></h1>
+		<p style = "color: red"><%= @chapter.title %></p>
+	</center>
+</div>
+
+	<%= @chapter.body.html_safe %>
+	<center>
+		<div class ="row">
+			<% if @book.chapters[0].chapter_number <= @chapter.chapter_number - 1  %>
+	
+				<%= link_to 'pre', book_chapter_path(@book, @chapter.chapter_number - 1),class: "btn btn-danger" %>
+			<% end %>	
+
+		<div class="dropup">
+		  <button class="dropbtn" onclick = "myFunction()">Chọn Chương</button>
+		  <div class="dropup-content" id = "myDropup">
+				<% @lists.each do |chapter| %>
+						<a href="/books/<%= @chapter.book.id %>/chapters/<%=chapter.id %>"  > Chương :<%= chapter.chapter_number%> </a>
+				<% end %>	
+				<%= will_paginate @lists %>
+		  </div>
+		</div>
+			<% if  @book.chapters[-1].chapter_number >= @chapter.chapter_number + 1%>
+				<%= link_to 'next', book_chapter_path(@book, @chapter.chapter_number + 1), class: "btn btn-success" if (@chapter.chapter_number + 1).present? %>
+			<% end %>
+		</div>
+	</center>
+</div>
+  <%= next_link %>
+
+
+
+<script type="text/javascript">
+	function myFunction() {
+  document.getElementById("myDropup").classList.toggle("show");
+}
+
+</script>

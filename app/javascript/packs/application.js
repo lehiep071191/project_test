@@ -28,7 +28,12 @@ import 'cocoon-js';
 //= require jquery_ujs
 //= require rails-ujs
 
-
+jQuery(document).ready(function($) {
+  // trigger pagination
+  $(".pagination form select").change(function(e) {
+    $(this).parent("form").submit();
+  });
+});
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
