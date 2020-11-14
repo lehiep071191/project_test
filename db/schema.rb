@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_13_132349) do
+ActiveRecord::Schema.define(version: 2020_11_14_131845) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "trackable_type"
@@ -31,12 +31,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_132349) do
     t.index ["trackable_type", "trackable_id"], name: "index_activities_on_trackable_type_and_trackable_id"
   end
 
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "author"
@@ -45,7 +39,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_132349) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
-    t.integer "count_view"
+    t.integer "count_view", default: 0
     t.index ["deleted_at"], name: "index_books_on_deleted_at"
   end
 
@@ -81,17 +75,6 @@ ActiveRecord::Schema.define(version: 2020_11_13_132349) do
     t.index ["deleted_at"], name: "index_comments_on_deleted_at"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "recipient_id"
-    t.string "action"
-    t.string "notifiable_type"
-    t.integer "notifiable_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_notifications_on_user_id"
-  end
-
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
@@ -124,9 +107,12 @@ ActiveRecord::Schema.define(version: 2020_11_13_132349) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "fullname"
     t.boolean "admin"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "notifications", "users"
 end

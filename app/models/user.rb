@@ -6,10 +6,14 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,:confirmable
 
-  	def current_user?(user)
+  def current_user?(user)
 		user && user == self
 	end
+  protected
+  def confirmation_required?
+    false
+  end
      
 end
