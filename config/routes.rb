@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
   mount ActionCable.server => '/cable'
   root 'pages#index'		
-  devise_for :users
+  devise_for :users,controllers: { confirmations: 'confirmations' }
   as :user do
     get "signin" => "devise/sessions#new"
     post "signin" => "devise/sessions#create"
