@@ -107,7 +107,7 @@ $(document).on('turbolinks:load', function(){
 
 	$('.click-in-all-book').on('click', function(){
 		var book_id = $(this).data('id');
-		var count_view = parseInt($('#countall-view-'+book_id).val());
+		var count_view = parseInt($('#count-view-all-'+book_id).val());
 		$.ajax({
 			url: '/books/' + book_id,
 			method: 'PUT',
@@ -125,7 +125,7 @@ $(document).on('turbolinks:load', function(){
 
 	$('.click-in-full-book').on('click', function(){
 		var book_id = $(this).data('id');
-		var count_view = parseInt($('#countfull-view-'+book_id).val());
+		var count_view = parseInt($('#count-view-full-'+book_id).val());
 		$.ajax({
 			url: '/books/' + book_id,
 			method: 'PUT',

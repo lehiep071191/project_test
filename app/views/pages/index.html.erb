@@ -93,6 +93,7 @@ a:hover{
             <tr>
               <td style = "color:black"> 
                 <%= link_to book.title, book, id: "countall-#{book.id}", class: "click-in-all-book", data: {id: "#{book.id}"} %>
+                 <input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-all-<%=book.id %>">
               </td>
               <td> 
                 <%= book.author %>
@@ -135,7 +136,7 @@ a:hover{
        <div class="d-flex flex-column text-center ">
       <div>
         <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "80%" ), book_path(book), id: "countfull-#{book.id}", class: "click-in-full-book", data: {id: "#{book.id}"} %>
-        <input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-<%=book.id %>">
+        <input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-full-<%=book.id %>">
       <div class = ""><%= book.title %></div>
       <div>Lượt xem: <%= book.count_view %></div>
       </div>
