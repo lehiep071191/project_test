@@ -1,63 +1,70 @@
 
-	<p style ="font-size: 40px; color: #ADFF2F"><%= @book.title  %></p>
-	<button id = "des"> mô tả </button>
-	<p id = "cat" style = "display: none"><%= @book.description %></p>
-	<p > Category:  <%= @book.category %></p>
+	<center style ="font-size: 40px; color: #ADFF2F"><%= @book.title  %></center>
+	<center><button id = "des"> mô tả </button></center>
+	<center id = "cat" style = "display: none"><%= @book.description %></center>
+	<center > Category:  <%= @book.category %></center>
 
 	
 			<% @chapters.each do |chapter| %>
 			<center style = "text-align: center;color: gold; font-size: 30px"><%= chapter.title %></center>
 				<center style = "text-align: center;color: red; font-size: 20px"> Tác giả: <%= chapter.book.author %></center>
-				<%= chapter.body.html_safe %>
-			<% end %>
-			<%= will_paginate(@chapters,pagination_options) %>
-	<div class = "row">	
-		<div class = "col-8">
-		<% if user_signed_in? %>	
-			<% if @rate.nil? %>
-				<input type="button" name="rate" class = "rates-book btn-success" id = "rate-book" value = "rate">
-			<div class = "rating-book" style = "width: 300px; display: none" >
-				<input value="<%= @book.class.name %>" type="hidden" name="rate[rate_duty_type]" id="rate_rate_duty_type">
-				<input value="<%= current_user.id %>" type="hidden" name="rate[rate_duty_type]" id="rate-book-user">
-				<input value="<%= @book.id %>" type="hidden" name="rate[rate_duty_id]" id="rate_rate_duty_id" class = "creat-rates">
-				<input class="star star-5" id="star-5" type="radio" value="5" name="rate[rating]">
-				<label class="star star-5" for="star-5"></label>
-				<input class="star star-4" id="star-4" type="radio" value="4" name="rate[rating]">
-				<label class="star star-4" for="star-4"></label>
-				<input class="star star-3" id="star-3" type="radio" value="3" name="rate[rating]">
-				<label class="star star-3" for="star-3"></label>
-				<input class="star star-2" id="star-2" type="radio" value="2" name="rate[rating]">
-				 <label class="star star-2" for="star-2"></label>
-				<input class="star star-1" id="star-1" type="radio" value="1" name="rate[rating]"> 
-				<label class="star star-1" for="star-1"></label>
-				<center><p style="width:50px">
-					<input type="button" name="commit" value="rate" class="btn rate-book" data-disable-with="rate"  data-id = "">
-				</p></center>
-			</div>
-			<% else %>	
-				<input type="button" name="rate" class = "rates-book btn-success" id = "re-rate-book" value = "re-rate">
-			<div class = "rating-book" style = "width: 300px; display: none" >
-				<input value="<%= @book.class.name %>" type="hidden" name="rate[rate_duty_type]" id="rate_rate_duty_type">
-				<input value="<%= current_user.id %>" type="hidden" name="rate[rate_duty_type]" id="rate-book-user">
-				<input value="<%= @book.id %>" type="hidden" name="rate[rate_duty_id]" id="rate_rate_duty_id" class = "creat-rates">
-				<input class="star star-5" id="star-5" type="radio" value="5" name="rate[rating]">
-				<label class="star star-5" for="star-5"></label>
-				<input class="star star-4" id="star-4" type="radio" value="4" name="rate[rating]">
-				<label class="star star-4" for="star-4"></label>
-				<input class="star star-3" id="star-3" type="radio" value="3" name="rate[rating]">
-				<label class="star star-3" for="star-3"></label>
-				<input class="star star-2" id="star-2" type="radio" value="2" name="rate[rating]">
-				 <label class="star star-2" for="star-2"></label>
-				<input class="star star-1" id="star-1" type="radio" value="1" name="rate[rating]"> 
-				<label class="star star-1" for="star-1"></label>
-				<center><p style="width:50px">
-					<input type="button" name="commit" value="rate" class="btn re-rate-book" data-disable-with="rate"  data-id = "<%= @rate.id %>">
-				</p></center>
-			</div>
-			<% end %>
+				<span style ="font-size: 18px">
+					<%= chapter.body.html_safe  %>
+				</span>
 			<% end %>
 
-		<div class = "append-comment" style = "margin-top: 20px">
+		
+			<%= will_paginate @chapters, :previous_label => 'Pre', next_label: 'Next'  %>
+		
+			
+
+	<div class = "row">	
+		<div class = "col-8">
+			<% if user_signed_in? %>	
+				<% if @rate.nil? %>
+					<input type="button" name="rate" class = "rates-book btn-success" id = "rate-book" value = "rate">
+				<div class = "rating-book" style = "width: 300px; display: none" >
+					<input value="<%= @book.class.name %>" type="hidden" name="rate[rate_duty_type]" id="rate_rate_duty_type">
+					<input value="<%= current_user.id %>" type="hidden" name="rate[rate_duty_type]" id="rate-book-user">
+					<input value="<%= @book.id %>" type="hidden" name="rate[rate_duty_id]" id="rate_rate_duty_id" class = "creat-rates">
+					<input class="star star-5" id="star-5" type="radio" value="5" name="rate[rating]">
+					<label class="star star-5" for="star-5"></label>
+					<input class="star star-4" id="star-4" type="radio" value="4" name="rate[rating]">
+					<label class="star star-4" for="star-4"></label>
+					<input class="star star-3" id="star-3" type="radio" value="3" name="rate[rating]">
+					<label class="star star-3" for="star-3"></label>
+					<input class="star star-2" id="star-2" type="radio" value="2" name="rate[rating]">
+					 <label class="star star-2" for="star-2"></label>
+					<input class="star star-1" id="star-1" type="radio" value="1" name="rate[rating]"> 
+					<label class="star star-1" for="star-1"></label>
+					<center><p style="width:50px">
+						<input type="button" name="commit" value="rate" class="btn rate-book" data-disable-with="rate"  data-id = "">
+					</p></center>
+				</div>
+				<% else %>	
+					<input type="button" name="rate" class = "rates-book btn-success" id = "re-rate-book" value = "re-rate">
+				<div class = "rating-book" style = "width: 300px; display: none" >
+					<input value="<%= @book.class.name %>" type="hidden" name="rate[rate_duty_type]" id="rate_rate_duty_type">
+					<input value="<%= current_user.id %>" type="hidden" name="rate[rate_duty_type]" id="rate-book-user">
+					<input value="<%= @book.id %>" type="hidden" name="rate[rate_duty_id]" id="rate_rate_duty_id" class = "creat-rates">
+					<input class="star star-5" id="star-5" type="radio" value="5" name="rate[rating]">
+					<label class="star star-5" for="star-5"></label>
+					<input class="star star-4" id="star-4" type="radio" value="4" name="rate[rating]">
+					<label class="star star-4" for="star-4"></label>
+					<input class="star star-3" id="star-3" type="radio" value="3" name="rate[rating]">
+					<label class="star star-3" for="star-3"></label>
+					<input class="star star-2" id="star-2" type="radio" value="2" name="rate[rating]">
+					 <label class="star star-2" for="star-2"></label>
+					<input class="star star-1" id="star-1" type="radio" value="1" name="rate[rating]"> 
+					<label class="star star-1" for="star-1"></label>
+					<center><p style="width:50px">
+						<input type="button" name="commit" value="rate" class="btn re-rate-book" data-disable-with="rate"  data-id = "<%= @rate.id %>">
+					</p></center>
+				</div>
+				<% end %>
+			<% end %>
+
+		<div class = "append-comment" style = "margin-top: 20px;">
 			<% if @comments.any? %>
 				<%= render @comments %>
 			<% end %>
@@ -71,8 +78,7 @@
 				<input type="button" name="commit" value="comment" class="btn-success post-comment" data-disable-with="comment">
 			</div>
 		<% end %>
-
-		</div>
+	</div>
 
 	<div class = "col-4">
 		<center> Bài đánh giá </center>	
@@ -83,7 +89,7 @@
 		<%= link_to 'create_post', new_book_post_path(@book), class: "btn btn-success"  %><br>
 		<% end %>
 
-</div>
+	</div>
 </div>
 
 

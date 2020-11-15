@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'restores/inex'
   get 'restores/new'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :edit,:update]
     resources :chapters, only: [:show, :index]
   end 
+  resources :categories, only: :index
   resources :users 
   resources :activities
   resources :rates

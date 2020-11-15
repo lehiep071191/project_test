@@ -86,7 +86,7 @@ $(document).on('turbolinks:load', function(){
 
 
 });
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
 	$('.click-in-book').on('click', function(){
 		var book_id = $(this).data('id');
 		var count_view = parseInt($('#count-view-'+book_id).val());
@@ -101,6 +101,42 @@ $(document).ready(function(){
 			success: function(data){
 				debugger
 				$('#count-view-'+book_id).replaceWith(data.data_view)
+			} 
+		})
+	})
+
+	$('.click-in-all-book').on('click', function(){
+		var book_id = $(this).data('id');
+		var count_view = parseInt($('#countall-view-'+book_id).val());
+		$.ajax({
+			url: '/books/' + book_id,
+			method: 'PUT',
+			dataType: 'json',
+			data: {
+				authenticity_token: $('[name="csrf-token"]')[0].content,
+				count_view: count_view += 1
+			},
+			success: function(data){
+				debugger
+				$('#countall-view-'+book_id).replaceWith(data.data_view)
+			} 
+		})
+	})
+
+	$('.click-in-full-book').on('click', function(){
+		var book_id = $(this).data('id');
+		var count_view = parseInt($('#countfull-view-'+book_id).val());
+		$.ajax({
+			url: '/books/' + book_id,
+			method: 'PUT',
+			dataType: 'json',
+			data: {
+				authenticity_token: $('[name="csrf-token"]')[0].content,
+				count_view: count_view += 1
+			},
+			success: function(data){
+				debugger
+				$('#countfull-view-'+book_id).replaceWith(data.data_view)
 			} 
 		})
 	})

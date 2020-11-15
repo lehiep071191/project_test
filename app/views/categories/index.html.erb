@@ -1,0 +1,78 @@
+<style type="text/css">
+  #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 0px solid #ddd;
+  padding: 8px;
+  font-size: 15px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+a {
+  color:black;
+}
+a:hover{
+  color:black;
+}
+.category-click:hover{
+  cursor: alias;
+}
+</style>
+<div class = "row">
+	<div class = "col-sm-9">
+		<span style = "font-size: 30px;color: gray;font-family: Arial Black">					 		Book: <%= params[:category] %>
+	  </span>
+		<table id = "customers">
+			<% @categories.each do |book| %>
+			<tr >
+				<td  style = "padding: 15px">
+					<%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", height: "70px"), book_path(book) %>
+				</td>
+				<td>
+					<%= link_to book.title, book_path(book) %>
+				</td>
+				<td>
+					<%= book.category %>
+				</td>
+				<td>
+					Số Chương: <%= book.chapters.count %>
+				</td>
+
+			</tr>
+			<% end %>
+
+
+		</table>
+				<%= will_paginate @categories %>
+
+	</div>
+	 <div class="col-sm-3">
+      <span style = "font-size: 30px;color: gray;font-family: Arial Black">					Category
+      </span>
+      <% Book.categories.keys.each_with_index do |t| %>
+        <div class="panel panel-default " >
+        	<a href="/categories?category=<%=t %>">
+            <div class="panel-heading"  data-id="<%= t %>">
+              <h4 class="panel-title " >
+                <%= t %>
+              </h4>
+            </div>
+ 					</a>
+        </div>
+      <% end %>
+    </div> 
+</div>
