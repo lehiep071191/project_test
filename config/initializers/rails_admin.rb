@@ -38,4 +38,15 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  config.model Chapter do
+  edit do
+    field :title, :string do
+    end  
+    field :chapter_number, :integer do 
+    end  
+    field :body, :ck_editor, :text do
+    end
+  end
+end
+
 end

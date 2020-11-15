@@ -73,6 +73,7 @@ gem 'will_paginate-bootstrap'
 gem "paranoia"
 gem 'rails_admin'
 gem 'figaro'
+gem 'whenever'
 
 
 

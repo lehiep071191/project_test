@@ -1,90 +1,165 @@
-<!-- <div style = "display: none">
-<iframe width="1280" height="720" src="https://www.youtube.com/embed/cJW1aBqWTqU?autoplay=1" frameborder="0" allow="accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-</div> -->
-<div>
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
+<style type="text/css">
+  #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="https://cdn.pixabay.com/photo/2017/07/23/16/01/nature-2531761__340.jpg" alt="Los Angeles" style="width:100%;">
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 15px;
+}
 
-      </div>
+#customers tr:nth-child(even){background-color: #f2f2f2;}
 
-      <div class="item">
-        <img src="https://cdn.pixabay.com/photo/2016/02/03/08/32/banner-1176676__340.jpg" alt="Chicago" style="width:100%;">
-      </div>
-    
-      <div class="item">
-        <img src="https://cdn.pixabay.com/photo/2017/10/03/17/53/nature-2813487__340.jpg" alt="New york" style="width:100%;">
-      </div>
-    </div>
+#customers tr:hover {background-color: #ddd;}
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-   <center><h1 style="color: red">All Book</h1></center>
-   <div class = "row">
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+a {
+  color:black;
+}
+a:hover{
+  color:black;
+}
+.category-click:hover{
+  cursor: alias;
+}
+</style>
+
+<span style="font-size: 30px; color: gray; font-family: Arial Black ">Truyện Hot</span>
+  <div class = "row">
      <div class ="col-sm-3 "> 
-      <center><h1 style="color: red"> Category</h1></center>
-             <div class="panel-group category-products" id="accordian" style = " cursor: pointer;"><!--category-productsr-->
-            <% Book.categories.keys.each_with_index do |t| %>
-              <div class="panel panel-default" >
-                <a href = "/books?category=<%=t %>">
-                  <div class="panel-heading">
-                    <h4 class="panel-title category-click" data-id="<%= t %>">
-                      <%=t %>
-                    </h4>
+      <div class="row row-cols-1">
+         <% @book_hots.each_with_index do |book, i| %>
+          <% if i == 0 %>
+               <div class="d-flex flex-column text-center " style = "margin-top: 0px">
+                  <div>
+                    <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "89%" ), book_path(book), id: "count-#{book.id}", class: "click-in-book", data: {id: "#{book.id}"} %>
+                    <input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-<%=book.id %>">
+                  <div class = ""><%= book.title %></div>
+                  <div>Lượt xem: <%= book.count_view %></div>
                   </div>
-                </a>
-              </div>
-            <% end %>
-          </div><!--/category-products-->
-          </div>
-      <div class = "col-sm-9">      
-        <div class="row row-cols-4">
-          <%= render @books %>
-        </div>
-          <%= render partial: 'shared/pagination', locals: {pagy: @pagy} if @pagy.pages > 1 %>  
-        <div class >
-          <% Book.limit(10).each do |book| %>
-
+               </div>
           <% end %>
+         <% end %>
+      </div>
+      </div>
+        <div class = "col-sm-9">      
+          <div class="row row-cols-6" >
+            <% @book_hots.each_with_index do |book, i| %>
+              <% if i > 0 %>
+                <div class="d-flex flex-column text-center ">
+                  <div>
+                    <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "80%" ), book_path(book), id: "count-#{book.id}", class: "click-in-book", data: {id: "#{book.id}"} %>
+                    <input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-<%=book.id %>">
+                  <div class = ""><%= book.title %></div>
+                  <div>Lượt xem: <%= book.count_view %></div>
+                  </div>
+                </div>
+              <% end %>  
+            <% end %>
+          </div>
+          <div>
+
+          </div> 
+    </div>
+  </div>
+  <div class="row" >
+    <div class = "col-sm-9">
+      <span style = "font-size: 30px; color: gray;font-family: Arial Black">New Book</span>
+      <span style = "float: right;color: gray;font-family: Arial Black">
+        <div class="">
+          <button class="btn " type="button" data-toggle="dropdown" style = "font-size: 25px; color: gray">Category new
+          <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <% Book.categories.keys.each_with_index do |t| %>
+              <li class = "category-click" data-id = "<%= t %>" style ="font-size: 25px; padding: 5px">  <%=t %></li>
+            <% end %>
+          </ul>
         </div>
-      </div>  
+        
+      </span>
+      <div>
+        <table id="customers">
+          <% @book_alls.each do |book| %>
+            <tr>
+              <td style = "color:black"> 
+                <%= link_to book.title, book, id: "countall-#{book.id}", class: "click-in-all-book", data: {id: "#{book.id}"} %>
+              </td>
+              <td> 
+                <%= book.author %>
+              </td>
+              <td> 
+                <%= book.category %>
+              </td>
+              <td> 
+                <%= time_ago_in_words(book.created_at) %>
+              </td>
+            </tr>
+          <% end %>  
+        </table>
+    </div>
+    <div>
+      
+    </div>
+    </div>
+    <div class="col-sm-3">
+      <span style = "font-size: 30px;color: gray;font-family: Arial Black">Category</span>
+      <% Book.categories.keys.each_with_index do |t| %>
+        <div class="panel panel-default " >
+          <a href="/categories?category=<%=t %>">
+            <div class="panel-heading"  data-id="<%= t %>">
+              <h4 class="panel-title " >
+                <%=t %>
+              </h4>
+            </div>
+          </a>
+        </div>
+      <% end %>
     </div>  
-<!--   
- 
+  </div>
+<div  style = "margin-top: 30px">
+  <span style = "color: gray; font-size: 30px; font-family: Arial Black">
+    Truyện Full
+  </span>  
+  <div class = "row row-cols-6">
+    <% Book.limit(12).each do |book|  %>
+       <div class="d-flex flex-column text-center ">
+      <div>
+        <%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "80%" ), book_path(book), id: "countfull-#{book.id}", class: "click-in-full-book", data: {id: "#{book.id}"} %>
+        <input type="hidden" name="book[count_view]" value = "<%=book.count_view %>" id = "count-view-<%=book.id %>">
+      <div class = ""><%= book.title %></div>
+      <div>Lượt xem: <%= book.count_view %></div>
+      </div>
+   </div>
+    <% end %>
+  </div>  
+</div>  
+
   <script type="text/javascript">
   		$(document).ready(function(){
   			$(document).on('click', '.category-click', function(){
+        debugger
   				var page_id = $(this).data('id');
   				$.ajax({
   					type: 'get',
   					url: '/books',
   					data: {
   						category: page_id
-
   					},
   					success: function(data){
-  						$('#home').html(data.data_books);
+              debugger
+  						$('#customers').html(data.data_books);
   					}
   				})
   			})
   		})
-  </script> -->
+  </script> 
