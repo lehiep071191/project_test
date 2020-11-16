@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'categories/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
   get 'restores/inex'
   get 'restores/new'
   get 'restores/show'

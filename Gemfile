@@ -74,6 +74,8 @@ gem "paranoia"
 gem 'rails_admin'
 gem 'figaro'
 gem 'whenever'
+gem 'sidekiq'
+
 
 
 
