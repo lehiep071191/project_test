@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :rates, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,:lockable,
          :recoverable, :rememberable, :validatable,:confirmable
 
   def current_user?(user)
