@@ -75,6 +75,8 @@ gem 'rails_admin'
 gem 'figaro'
 gem 'whenever'
 gem 'sidekiq'
+gem 'sidekiq-scheduler'
+gem 'redis-rails'
 
 
 

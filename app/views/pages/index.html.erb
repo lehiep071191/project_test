@@ -7,7 +7,6 @@
 }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
   padding: 8px;
   font-size: 15px;
 }
@@ -89,7 +88,7 @@ a:hover{
       </span>
       <div>
         <table id="customers">
-          <% @book_alls.each do |book| %>
+          <% @categories.each do |book| %>
             <tr>
               <td style = "color:black"> 
                 <%= link_to book.title, book, id: "countall-#{book.id}", class: "click-in-all-book", data: {id: "#{book.id}"} %>

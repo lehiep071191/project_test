@@ -7,3 +7,7 @@ production:
 :queues:
   - default
   - mailers
+:schedule:
+  email_hello:           
+    every: 2.days      
+    class: EmailHelloJob

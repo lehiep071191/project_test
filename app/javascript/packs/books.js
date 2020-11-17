@@ -99,8 +99,9 @@ $(document).on('turbolinks:load', function(){
 				count_view: count_view += 1
 			},
 			success: function(data){
-				debugger
+				$('#countall-view-'+book_id).replaceWith(data.data_view)
 				$('#count-view-'+book_id).replaceWith(data.data_view)
+				$('#countfull-view-'+book_id).replaceWith(data.data_view)
 			} 
 		})
 	})
@@ -117,8 +118,9 @@ $(document).on('turbolinks:load', function(){
 				count_view: count_view += 1
 			},
 			success: function(data){
-				debugger
 				$('#countall-view-'+book_id).replaceWith(data.data_view)
+				$('#count-view-'+book_id).replaceWith(data.data_view)
+				$('#countfull-view-'+book_id).replaceWith(data.data_view)
 			} 
 		})
 	})
@@ -135,8 +137,9 @@ $(document).on('turbolinks:load', function(){
 				count_view: count_view += 1
 			},
 			success: function(data){
-				debugger
 				$('#countfull-view-'+book_id).replaceWith(data.data_view)
+				$('#count-view-'+book_id).replaceWith(data.data_view)
+				$('#countall-view-'+book_id).replaceWith(data.data_view)
 			} 
 		})
 	})

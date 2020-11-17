@@ -1,8 +1,9 @@
+
 # Use this file to easily define all of your cron jobs.
 #
 # It's helpful, but not entirely necessary to understand cron before proceeding.
 # http://en.wikipedia.org/wiki/Cron
-
+set :environment, "development"
 # Example:
 #
 # set :output, "/path/to/my/cron_log.log"
@@ -18,3 +19,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+job_type :rake,'cd /home/lehiep/bt_rails/project_test && :environment_variable=:environment bundle exec rake :task --silent :output'
+
+every "* * * * *" do
+	rake "job:mailminute"
+end	

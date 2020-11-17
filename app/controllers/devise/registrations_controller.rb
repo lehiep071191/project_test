@@ -18,7 +18,7 @@ class Devise::RegistrationsController < DeviseController
 
     resource.save
     yield resource if block_given?
-     SendEmailJob.set(wait: 5.minutes).perform_later @user
+     SendEmailJob.set(wait: 1.minutes).perform_later @user
     if resource.persisted?
       if resource.active_for_authentication?
         set_flash_message! :notice, :signed_up
