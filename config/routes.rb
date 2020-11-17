@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
   get 'categories/index'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_scope :user do
+    authenticate :user do
+     mount Sidekiq::Web => "/sidekiq"
+    end
+  end
+
 
   get 'restores/inex'
   get 'restores/new'

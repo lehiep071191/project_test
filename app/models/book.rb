@@ -2,6 +2,7 @@ class Book < ApplicationRecord
 	acts_as_paranoid
 	has_many :posts
 	has_many :chapters
+	scope :order_by_time,->{ order(created_at: :desc) }
 	accepts_nested_attributes_for :chapters, reject_if: :all_blank, allow_destroy: true
 	has_many :rates, as: :rate_duty, dependent: :destroy
 	has_many :comments, as: :cmt_duty, dependent: :destroy

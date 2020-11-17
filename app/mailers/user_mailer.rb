@@ -6,5 +6,9 @@ class UserMailer < ApplicationMailer
 		@url  = 'http://localhost:3000/signin'
 		mail(to: @user.email, subject: 'Welcome to My Awesome Site')
 	end
+	def hello user
+			@user = user
+			mail to: @user.email,subject: "Hello"
+	end		
 
 end
