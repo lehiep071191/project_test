@@ -19,8 +19,8 @@ set :environment, "development"
 # end
 
 # Learn more: http://github.com/javan/whenever
-job_type :rake,'cd /home/lehiep/bt_rails/project_test && :environment_variable=:environment bundle exec rake :task --silent :output'
+# job_type :rake,'cd /home/lehiep/bt_rails/project_test && :environment_variable=:environment bundle exec rake :task --silent :output'
 
-every "* * * * *" do
-	rake "job:mailminute"
-end	
+# every "* * * * *" do
+# 	rake "job:mailminute"
+# end	

@@ -12,7 +12,6 @@ class Admin::BooksController < Admin::ApplicationController
 		@chapter = @book.chapters.build
 	end	
 	def create
-		byebug
 		# @book = Book.new(category: params[:category].to_i, title: params[:title], 
 		# 				author: params[:author], description: params[:description])
 		bpr = book_params.merge(category: params[:category].to_i)
@@ -56,7 +55,7 @@ class Admin::BooksController < Admin::ApplicationController
 		params.require(:book).permit(:title, :author, :description, :category, :count_view, chapters_attributes: [:title, :body, :chapter_number, :_destroy])
 	end	
 	def set_book
-		@book = Book.find_by id: params[:id]
+		@book = Book.find_by slug: params[:id]
 		if @book.nil?
 			flash[:danger] = "book not found"
 			redirect_to admin_books_path

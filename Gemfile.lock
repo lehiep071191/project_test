@@ -132,6 +132,7 @@ GEM
       raabro (~> 1.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     haml (5.2.0)
       temple (>= 0.8.0)
       tilt
@@ -367,6 +368,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   friendly_id
+  gmaps4rails
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
