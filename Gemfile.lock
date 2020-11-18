@@ -125,6 +125,8 @@ GEM
       thor (>= 0.14.0, < 2)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    friendly_id (5.4.1)
+      activerecord (>= 4.0.0)
     fugit (1.4.0)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
@@ -364,6 +366,7 @@ DEPENDENCIES
   devise
   figaro
   font-awesome-sass
+  friendly_id
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)

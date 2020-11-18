@@ -77,6 +77,7 @@ gem 'whenever'
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 gem 'redis-rails'
+gem "friendly_id"
 
 
 

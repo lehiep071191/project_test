@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
 	acts_as_paranoid
+	extend FriendlyId
+  	friendly_id :title, use: [:slugged, :finders]
 	has_many :posts
 	has_many :chapters
 	scope :order_by_time,->{ order(created_at: :desc) }

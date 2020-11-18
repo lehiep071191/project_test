@@ -26,11 +26,11 @@ class BooksController < ApplicationController
 		render json: {
 			data_view: render_to_string(@book)
 		}, status: :ok
-		redirect_to book_path(@book)
+		
 	end	
 	private
 	def set_book
-		@book = Book.find_by id: params[:id]
+		@book = Book.find_by slug: params[:id]
 		if @book.nil?
 			redirect_to root_url
 		end		

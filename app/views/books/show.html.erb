@@ -1,9 +1,27 @@
-
+<style type="text/css">
+	#select_chapter_paginate li{
+		display: inline-block;
+		list-style: none;
+	}
+	#previous .next_page{
+		display: none;
+	}
+	#links_page .next_page{
+		display: none;
+	}
+	#links_page .previous_page{
+		display: none;
+	}
+	#next .previous_page{
+		display: none;
+	}
+</style>	
+	<% provide(:title, @book.title) %>
 	<center style ="font-size: 40px; color: #ADFF2F"><%= @book.title  %></center>
 	<center><button id = "des"> mô tả </button></center>
 	<center id = "cat" style = "display: none"><%= @book.description %></center>
 	<center > Category:  <%= @book.category %></center>
-
+		<%= ((@book.rates.pluck(:rating)).inject{ |sum, el| sum + el }.to_f / (@book.rates.pluck(:rating)).size).round(1)	 %> <img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/1077px-Star_icon_stylized.svg.png" style="width: 20px;  "> | <%= @book.rates.count %> votes. <br />
 	
 			<% @chapters.each do |chapter| %>
 			<center style = "text-align: center;color: gold; font-size: 30px"><%= chapter.title %></center>
@@ -12,10 +30,19 @@
 					<%= chapter.body.html_safe  %>
 				</span>
 			<% end %>
-
-		
-			<%= will_paginate @chapters, :previous_label => 'Pre', next_label: 'Next'  %>
-		
+			<div id = "select_chapter_paginate">
+			<ul >
+				<li id = "previous">
+					<%= will_paginate @chapters, :previous_label => 'Pre',:page_links => false, next_label: ""  %>
+				</li>
+				<li id = "links_page">
+					<%= will_paginate @chapters, :previous_label => '', next_label: ''  %>
+				</li>
+				<li id = "next">
+					<%= will_paginate @chapters, :previous_label => "",:page_links => false, next_label: 'Next'  %>
+				</li>
+			</ul>
+			</div>
 			
 
 	<div class = "row">	
