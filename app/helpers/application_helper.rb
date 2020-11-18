@@ -25,5 +25,10 @@ module ApplicationHelper
 	    class: 'pagination row-fluid',
 	  }
 	end
+	def average_book
+		average = []
+		average = @book.rates.pluck(:rating)
+		(average.inject{ |sum, el| sum + el }.to_f / average.size).round(1)	
+	end	
 	
 end
