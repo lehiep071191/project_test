@@ -21,6 +21,7 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import '../stylesheets/application';
 import 'cocoon-js';
 
+
 //= require ckeditor/init
 //= javascript_include_tag Ckeditor.cdn_url
 //= require social-share-button

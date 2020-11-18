@@ -1,0 +1,42 @@
+<%= render 'new' %>
+
+
+<table>
+	<tr>
+		<th>
+			Name
+		</th>
+		<th>
+			Address
+		</th>
+		<th>
+			Desctiption
+		</th>
+
+		<th>
+			Latitude
+		</th>
+		<th>
+			Longitude
+		</th>
+	</tr>
+	<% @routers.each do |router| %>
+		<tr>
+			<td>
+				<%= router.name %>
+			</td>
+			<td>
+				<%= router.address %>
+			</td>
+			<td>
+				<%= router.description%>
+			</td>
+			<td>
+				<%= router.latitude %>
+			</td>
+			<td>
+				<%= router.longitude %>
+			</td>
+		</tr>
+	<% end %>
+</table>

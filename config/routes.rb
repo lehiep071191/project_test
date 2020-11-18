@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   require 'sidekiq/web'
   get 'categories/index'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_scope :user do
     authenticate :user do
      mount Sidekiq::Web => "/sidekiq"
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     resources :chapters
     resources :posts
     resources :restores
+    resources :routers 
   end  
   get 'admin/home', to: 'admin/pages#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
