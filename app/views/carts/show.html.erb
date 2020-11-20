@@ -1,0 +1,39 @@
+
+		
+	
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+			  <li><a href="#">Home</a></li>
+			  <li class="active"><%=t ("carts.show.Cart")%></li>
+			</ol>
+		</div>
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image"><%=t ("carts.show.Item")%></td>
+						<td class="description">Tên sách</td>
+						<td class="price"><%=t ("carts.show.Price")%></td>
+						
+						<td class="quantity"><%=t ("carts.show.Quantity")%></td>
+						<td class="total"><%=t ("carts.show.Total")%></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+					<%= render "carts/cart" %>
+				</tbody>
+			</table>
+		</div>
+				<p class="dia_chi">
+					<%= link_to carts_path,
+						class: "btn btn-lg btn-primary", method: :get do %>
+						<%= t ("carts.show.BUY") %>
+					<% end %>
+				</p>
+		
+	</div>
+
+</section>

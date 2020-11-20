@@ -1,0 +1,75 @@
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-sm-4">
+				<%= link_to image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "100%"), '#' %>
+		</div>
+		<div class = "col-sm-5">
+			<h1>Tên sách: <%= @booksale.name %></h1>
+			<h2>Thể loại: <%= @booksale.category %></h2>
+			<h2>Giá: <%= @booksale.price %></h2>	
+			<input type="number" id="booksale_id" value = "<%=@booksale.id %>">
+			<div>
+				<button id ="add">+</button>
+				<input id ="result_quantity" type ="text" value = "1">
+				<button id ="reduce">-</button>
+			</div>	
+				<button type="button" class="btn btn-fefault cart button-cart" style ="font-size: 15px ">
+					<i class="fa fa-shopping-cart"></i>
+					Add to cart
+				</button>	
+		</div>	
+	</div>
+</div>
+
+<input type="text" name="cart" id = "cart_id" value="<%=current_cart.id%>">
+
+<script type="text/javascript">
+	$(document).on('turbolinks:load', function(){
+		var quantity = 1
+		$('#add').click(function(){
+			quantity = quantity += 1;
+			$("#result_quantity").val(quantity) 
+		});
+		$('#reduce').click(function(){
+			if (quantity > 1){
+				quantity = quantity -= 1 
+			}
+			$("#result_quantity").val(quantity);
+		});
+	
+	$(document).on('click', '.button-cart', function(){
+		var booksale_id = $("#booksale_id").val();
+		var cart_id = $('#cart_id').val();
+		debugger
+	    $.ajax({
+	      url: '/carts/'+ cart_id,
+	      data: {
+	              authenticity_token: $('[name="csrf-token"]')[0].content,
+	              quantity: $("#result_quantity").val(),
+	              booksale_id: booksale_id
+	          },
+	          datatype: "json",
+	          type: 'patch',
+	          error: function(){ 
+	              alert('khong thanh cong');
+	            
+	              $("#add-login").click();
+	          },
+	          success : function(data) { 
+	          	debugger
+	              if(!data.success&& !data.quantity){
+	                $("#notice-select").html(data.errors[0].message); 
+	    
+	              } else if(data.success){
+	                
+	                alert('them vao gio hang thanh cong');
+	              }
+	          } 
+	    })
+	})    
+  })
+</script>
+
+
+
