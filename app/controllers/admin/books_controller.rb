@@ -14,7 +14,7 @@ class Admin::BooksController < Admin::ApplicationController
 	def create
 		# @book = Book.new(category: params[:category].to_i, title: params[:title], 
 		# 				author: params[:author], description: params[:description])
-		bpr = book_params.merge(category: params[:category].to_i)
+		bpr = book_params.merge(category: book_params[:category].to_i)
 		@book = Book.new bpr
 		if @book.save!
 			redirect_to admin_books_path
