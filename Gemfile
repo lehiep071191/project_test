@@ -80,6 +80,7 @@ gem 'sidekiq-scheduler'
 gem 'redis-rails'
 gem "friendly_id"
 gem 'gmaps4rails'
+gem 'config'
 
 
 

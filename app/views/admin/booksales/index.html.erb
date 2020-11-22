@@ -42,7 +42,10 @@ a:hover{
 			Ngày nhập
 		</th>
 		<th>
-			Xóa
+			Giảm Giá
+		</th>
+		<th>
+			Chỉnh sửa
 		</th>
 	</tr>
 
@@ -61,7 +64,12 @@ a:hover{
 				<%= time_ago_in_words(booksale.created_at) %>
 			</td>
 			<td>
-				<%= link_to 'xoa', '#' %>
+				<% if booksale.discount.to_i > 0 %>
+					<%= booksale.discount  %> %
+				<% end %>	
+			</td>
+			<td>
+				<%= link_to 'edit', edit_admin_booksale_path(booksale) %>
 			</td>
 		</tr>
 		

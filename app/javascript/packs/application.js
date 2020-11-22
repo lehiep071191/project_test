@@ -20,6 +20,9 @@ import "packs/chapter.js"
 import "@fortawesome/fontawesome-free/css/all.css";
 import '../stylesheets/application';
 import 'cocoon-js';
+import 'packs/cart.js'
+import 'packs/admin_order.js'
+import 'packs/order_show.js'
 
 
 //= require ckeditor/init

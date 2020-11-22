@@ -10,7 +10,7 @@
 				<h4><%= booksale.name %></h4>
 			</td>
 			<td>
-				<%= booksale.price %>
+				<span id = "unit-price-<%= booksale.id %>"><%= booksale.discount_price %></span>
 			</td>
 		
 			<td class="cart_quantity"  >
@@ -18,17 +18,18 @@
 					<button class="add-key" data-iddetail="<%= booksale.id %>"  
 						> + </button>
 					<input style ="width: 30px" class="quantity-<%= booksale.id %>" name="quantity" value= "<%= value  %>" autocomplete="off" >
-					<button class="minus-key" data-id="<%= booksale.id %>" > - </button>
+					<button class="minus-key" data-iddetail="<%= booksale.id %>" > - </button>
 				</div>
 			</td>
 			<td>
-				<%= booksale.price*value%>
+					<span id = "cart_total_price-<%= booksale.id%>"><%= number_to_currency(booksale.price * value.to_i)%></span>
 			</td>
 			
 			<td class="cart_delete-<%= booksale.id %>">
-				<button class="delete-product" data-id = "<%= booksale.id %>">X</button>
+				<button class="delete-product" data-id = "<%= current_cart.id %>" data-booksale = "<%=booksale.id%>">X</button>
 			</td>
 		</tr>
 	<%end%>
+
 <%end%>
 

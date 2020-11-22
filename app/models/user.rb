@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :rates, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one :cart
-  has_many :order
+  has_many :orders
 
   devise :database_authenticatable, :registerable,:lockable,
          :recoverable, :rememberable, :validatable,:confirmable

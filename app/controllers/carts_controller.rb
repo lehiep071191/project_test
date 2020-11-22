@@ -9,15 +9,12 @@ class CartsController < ApplicationController
 	def show
 	end	
 	def update
-		byebug
 			quantity_booksale = params[:quantity]
 			id_booksale = params[:booksale_id]
 			@hash_content = current_cart.content
 			if @hash_content.nil?
-				byebug
 				@hash_content ={"#{id_booksale}": quantity_booksale}			
 			elsif @hash_content.has_key?("#{id_booksale}")&& params[:cart_identy].nil?
-	
 				@old_quantity = current_cart.content["#{id_booksale}"]
 				@hash_content[:"#{id_booksale}"] = quantity_booksale.to_i + @old_quantity.to_i
 			else
@@ -25,7 +22,6 @@ class CartsController < ApplicationController
 				@hash_content[:"#{id_booksale}"] = quantity_booksale
 			end
 			current_cart.update!(content: @hash_content, user_id: current_user.id)
-			byebug
 			@quantity = current_cart.content["#{id_booksale}"]
 
 			 render json:  {
@@ -41,7 +37,7 @@ class CartsController < ApplicationController
 	end
 
 	def destroy
-		id_booksale = params[:id]
+		id_booksale = params[:booksale_id]
 		@hash_content = current_cart.content.reject!{|key, value| key == "#{id_booksale}"}
 		if @hash_content.empty?
 			@hash_content =  nil
@@ -54,7 +50,6 @@ class CartsController < ApplicationController
 	end
 	private 
 	def set_cart
-		byebug
 		@cart = current_cart.id
 	end	
 end

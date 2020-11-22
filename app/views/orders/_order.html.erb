@@ -1,0 +1,52 @@
+<% if current_user.orders.present? %>
+	<% order.order_details.each do|order_detail| %>
+		<% booksale= Booksale.find_by order_detail.booksale_id.to_s %>
+
+			<tr >
+				<td >
+				
+					<%= image_tag("https://i.pinimg.com/736x/67/37/3d/67373d4d12004cc8337fcfe1226698de.jpg", width: "50px")%>
+				</td>
+				<td>
+					<h4><%= booksale.product.name %></h4>
+				</td>
+				<td  >
+					<%= number_to_currency(booksale.discount_price )%>
+				</td>
+
+				<td class= "quality-correct">
+						
+						<%= order_detail.quality %>
+				</td>
+				<td>
+					<%= number_to_currency(booksale.discount_price*order_detail.quality.to_i)%>
+					
+				</td>	
+				
+			</tr>
+	<% end %>	
+			<tr >
+				<td colspan="6" class="total-oder" >
+					<%= t(".total_price") %> 
+					<b><%=number_to_currency(order.total_price)%></b>
+				</td>	
+			</tr>
+			<tr class ="correct" >
+				<td class ="return-status" colspan="2"><%= order.order_status %></td>
+					
+				<td  colspan="4">
+					<%if order.Awaiting?%>
+						<input value="6" type="hidden" name="order[order_status]"
+							id= "order_order_status<%= order.id%>" >
+						<button_tag class= "cancel-order2 btn btn-success" 
+							data-id = "<%=order.id %>" name=""> 
+							<%= t("orders.order.cancel") %>
+						</button_tag> 
+		
+					<%end%>
+					<span class="text-correct">
+						<%= link_to "CHI TIET DON HANG", order_path(order) %>	
+					</span>
+				</td>
+			</tr>	
+<% end %>
