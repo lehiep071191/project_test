@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
 		pr = order_params.merge(order_status: order_params[:order_status].to_i)
 		@order = Order.new pr
 		if @order.save!
+			OrderJob.set(wait: 1.minutes).perform_later @order
 			redirect_to @order,notice: t('orders.create.notice')
 			if current_user.address.nil?
 				current_user.update(address:@order.address)
