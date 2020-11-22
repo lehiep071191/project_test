@@ -1,0 +1,3 @@
+order_status:
+  ["Awaiting", "Cancelseller", "Accepted", "Processing",
+            "Shipping", "Delivered", "Refunded","Cancelbuyer"]

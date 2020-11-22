@@ -62,16 +62,19 @@
 			</i>
 			<% end %>
 		</li>
+			<% if user_signed_in? && current_user.orders.last.present? %>
 		<li>
-			<a href="#">Diễn đàn</a>
+				<li><%= link_to t("orders.show.checkout"), order_path(current_user.orders.last) %></li>
+
 		</li>
+		<% end %>
 		<li>
 			<% if user_signed_in? %>
 			  <%= link_to  cart_path(current_cart) do %>
 			 	<i class="fa fa-shopping-cart" style = "font-size: 16px"></i>   Cart
 			  <% end %>	
-			<% end %>
 		</li>
+			<% end %>
 		<li>
 			<a href="/booksales"> Shop</a>
 		</li>
@@ -97,7 +100,7 @@
 				<i class="fa fa-sign-out" style="font-size:24px"></i>
 				<% end %>	
 			<% else %>
-				<%= link_to 'login', new_user_session_path %>
+				<%= link_to 'login', new_user_session_path, id: "add-login" %>
 			<% end %>
 			<%= render 'activities/counter', counter: @activities.count %>
 		</li>

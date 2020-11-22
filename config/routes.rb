@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy, :index]
   resources :add_booksale_to_carts
   resources :carts
+  resources :orders
   namespace :admin do
     resources :books 
     resources :chapters
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
     resources :restores
     resources :routers 
     resources :booksales
+    resources :orders
   end  
   get 'admin/home', to: 'admin/pages#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

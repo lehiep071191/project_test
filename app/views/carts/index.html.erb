@@ -1,0 +1,45 @@
+
+<section id="cart_items">
+	<div class="container">
+		<div class="breadcrumbs">
+			<ol class="breadcrumb">
+			  <li><a href="#">Home</a></li>
+			  <li class="active"><%=t ("carts.index.Payment")%></li>
+			</ol>
+
+		</div>
+		<div class="table-responsive cart_info">
+			<table class="table table-condensed">
+				<thead>
+					<tr class="cart_menu">
+						<td class="image"><%=t ("carts.show.Item")%></td>
+						<td class="description"></td>
+						<td class="price"><%=t ("carts.show.Price")%></td>
+						<td class="quantity"><%=t ("carts.show.Quantity")%></td>
+						<td class="total"><%=t ("carts.show.Total")%></td>
+						<td></td>
+					</tr>
+				</thead>
+				<tbody>
+
+					<%= render "carts/buy" %>
+				</tbody>
+			</table>
+			<hr>
+			<div class="payment">						
+				<div><%=t ("carts.index.delivery_cost")%>:
+				 	<%=number_to_currency(30000)%>	
+				 </div>
+				<div ><%=t ("carts.index.total_money")%>:
+					 <%= number_to_currency(total_payment) %>	
+				 </div>
+				<div class="cash"> <%=t ("carts.index.payment_total")%>:
+					<b class="color"> <%=number_to_currency(30000+@sum) %></b>
+				</div>
+			</div>
+		</div>
+		
+		<p> <%= link_to (t ".order"), new_order_path , class: "btn btn-lg btn-primary" %></p>
+	</div>
+
+</section> 

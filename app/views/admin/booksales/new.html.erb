@@ -1,6 +1,8 @@
+<% provide(:title, "booksale new")  %>
 <%= form_for [:admin, @booksale] do |f| %>
 	<%= f.text_field :name, class: "form-control" %>
 	<%= f.number_field :price, class: "form-control" %>
+	<%= f.number_field :discount, value: 0, class: "form-control" %>
 	<%= f.select :category, options_for_select(Booksale.categories)%>
 	<%= f.submit 'create'%>
 <% end %>

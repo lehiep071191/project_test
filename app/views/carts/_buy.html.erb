@@ -1,0 +1,33 @@
+<% if current_cart.content.present? %>
+	<% current_cart.content.each do|key, value| %>
+		<% booksale= Booksale.find_by id:key %>
+
+			<tr class ="xoa-<%= booksale.id %>">
+				<td class="cart_product">
+					<a href=""><img src="images/cart/one.png" alt=""></a>
+				</td>
+				<td class="cart_description">
+					<h4><%= booksale.name %></h4>
+					<p >ID<%= "#{key}" %></p>
+				</td>
+				<td class="cart_price" >
+					<p id ="unit-price-<%= booksale.id %>" ><%= number_to_currency(booksale.discount_price )%></p>
+				</td>
+
+				<td class="cart_quantity"  >
+					<div class="cart_quantity_button">
+						<%=value %>	
+					</div>
+				</td>
+				<td class="cart_total">
+					<p id="cart_total_price-<%= booksale.id %>">
+						<%= number_to_currency(booksale.price*value.to_i)%> 
+					</p>
+					
+				</td>
+				
+			</tr>
+
+	<% end %>	
+	
+<% end %>

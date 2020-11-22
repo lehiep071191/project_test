@@ -1,0 +1,33 @@
+<% if current_user.orders.present? %>
+	<% @order.order_details.each do|order_detail| %>
+		<% booksale= Booksale.find_by id: order_detail.booksale_id.to_s %>
+
+			<tr class ="xoa-<%= booksale.id %>">
+				<td class="cart_product">
+					<a href=""><img src="images/cart/one.png" alt=""></a>
+				</td>
+				<td class="cart_description">
+					<h4><%= booksale.name %></h4>
+					<p >ID<%= booksale.id %></p>
+				</td>
+				<td class="cart_price" >
+					<p id ="unit-price-<%= booksale.id %>" ><%= number_to_currency(booksale.price)%></p>
+				</td>
+
+
+				<td class="cart_quantity"  >
+					<div class="cart_quantity_button">
+						
+						<%= order_detail.quantity %>
+						
+					</div>
+				</td>
+				<td class="cart_total">
+					<p id="cart_total_price-<%= booksale.id %>"><%= number_to_currency(booksale.price*order_detail.quantity.to_i)%> </p>
+				</td>
+				
+			</tr>
+
+	<% end %>	
+	
+<% end %>

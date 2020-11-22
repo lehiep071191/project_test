@@ -31,4 +31,5 @@ module ApplicationHelper
 		(average.inject{ |sum, el| sum + el }.to_f / average.size).round(1)	
 	end	
 	
+	
 end
