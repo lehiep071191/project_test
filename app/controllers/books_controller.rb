@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-	before_action :set_book, only: [:show,:update]
+	before_action :set_book, only: [:show]
 	def index
 		# @pagy, @books = pagy(Book.all, items: 9)
 		@books = Book.order_by_time.send(params["category"]).limit(15)
@@ -22,7 +22,9 @@ class BooksController < ApplicationController
 
 	end	
 	def update
+		@book = Book.find_by id: params[:id]
 		@book.update! count_view: params[:count_view]
+
 		render json: {
 			data_view: render_to_string(@book)
 		}, status: :ok
