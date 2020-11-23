@@ -83,7 +83,7 @@ gem 'gmaps4rails'
 gem 'config'
 gem 'underscore-rails'
 gem "chartkick"
-
+gem 'geocoder'
 
 
 

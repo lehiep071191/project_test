@@ -11,7 +11,10 @@ require("channels")
 require("jquery")
 require("chartkick")
 require("chart.js")
+
+require("underscore")
 require('admin-lte');
+
 
 import "bootstrap";
 import "packs/books.js";
@@ -22,10 +25,11 @@ import "packs/chapter.js"
 import "@fortawesome/fontawesome-free/css/all.css";
 import '../stylesheets/application';
 import 'cocoon-js';
+import 'underscore'
 import 'packs/cart.js'
 import 'packs/admin_order.js'
 import 'packs/order_show.js'
-import 'underscore'
+
 
 
 
@@ -36,6 +40,7 @@ import 'underscore'
 //= require jquery_ujs
 //= require rails-ujs
 //= require gmaps/google
+//= require underscore
 
 jQuery(document).ready(function($) {
   // trigger pagination

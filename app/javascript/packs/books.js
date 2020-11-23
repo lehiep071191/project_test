@@ -88,6 +88,7 @@ $(document).on('turbolinks:load', function(){
 });
 $(document).on('turbolinks:load', function(){
 	$('.click-in-book').on('click', function(){
+
 		var book_id = $(this).data('id');
 		var count_view = parseInt($('#count-view-'+book_id).val());
 		$.ajax({
@@ -99,6 +100,7 @@ $(document).on('turbolinks:load', function(){
 				count_view: count_view += 1
 			},
 			success: function(data){
+
 				$('#countall-view-'+book_id).replaceWith(data.data_view)
 				$('#count-view-'+book_id).replaceWith(data.data_view)
 				$('#countfull-view-'+book_id).replaceWith(data.data_view)
