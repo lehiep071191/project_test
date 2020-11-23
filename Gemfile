@@ -81,6 +81,8 @@ gem 'redis-rails'
 gem "friendly_id"
 gem 'gmaps4rails'
 gem 'config'
+gem 'underscore-rails'
+gem "chartkick"
 
 
 

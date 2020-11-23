@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_085631) do
+ActiveRecord::Schema.define(version: 2020_11_23_012549) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "trackable_type"
@@ -133,6 +133,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_085631) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "book_id"
     t.datetime "deleted_at"
+    t.integer "status"
     t.index ["deleted_at"], name: "index_posts_on_deleted_at"
   end
 

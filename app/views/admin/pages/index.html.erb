@@ -1,0 +1,19 @@
+<div class = "row">
+	Theo dõi Đơn hàng trong  hôm nay
+	<%= column_chart Order.group(:order_status).where("created_at >=?", 1.day.ago).count %>
+	<% Order.where("created_at>=?", 7.day.ago).take(4).each do |order| %>
+	<div class = "col">
+		<table id = "customers">	
+			<tr>
+				<td>
+					<%= order.order_status %>
+				</td>
+				<td>
+					<%= order.user.email %>
+				</td>
+			</tr>
+		</table>
+	</div>	
+		
+	<% end %>
+</div>

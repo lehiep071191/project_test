@@ -9,6 +9,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("jquery")
+require("chartkick")
+require("chart.js")
 require('admin-lte');
 
 import "bootstrap";
@@ -23,6 +25,8 @@ import 'cocoon-js';
 import 'packs/cart.js'
 import 'packs/admin_order.js'
 import 'packs/order_show.js'
+import 'underscore'
+
 
 
 //= require ckeditor/init
@@ -31,6 +35,7 @@ import 'packs/order_show.js'
 //= require jquery
 //= require jquery_ujs
 //= require rails-ujs
+//= require gmaps/google
 
 jQuery(document).ready(function($) {
   // trigger pagination
