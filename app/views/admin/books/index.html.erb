@@ -2,26 +2,26 @@
 <%= link_to 'create-book', new_admin_book_path , class: "btn btn-new" %>
 <%= link_to 'export', admin_books_path(format: :csv) %>
  <%= link_to 'restore', admin_restores_path %>
-<table style = "border: 0.5px solid black; text-align: center, font-size: 14px;">
-	<tr style = "border: 0.5px solid black;" id = "th">
-		<th style = "border: 0.5px solid black;width: 100px">
+<table id = "customers">
+	<tr >
+		<th >
 			Title
 		</th>
-		<th  style = "border: 0.5px solid black;width: 200px">
+		<th >
 			author
 		</th >
-		<th style = "border: 0.5px solid black;width: 400px">
+		<th >
 			description
 		</th >
-		<th style = "border: 0.5px solid black;width: 100px">
+		<th >
 			category
 		</th >
-		<td style = "border: 0.5px solid black;width: 50px">
+		<th >
 			edit 
-		</td>
-		<td style = "border: 0.5px solid black;width: 50px">
+		</th>
+		<th >
 			delete
-		</td>
+		</th>
 	</tr>
 		<tbody id = "append-book">
 			<%= render @books %>

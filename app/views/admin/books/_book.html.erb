@@ -1,17 +1,17 @@
 <tr id = "book-<%= book.id%>"> 
-	<td style = "border: 0.5px solid black;width: 100px">
+	<td>
 		<%= link_to book.title, admin_book_path(book) %>
 	</td >
-	<td  style = "border: 0.5px solid black;width: 100px">
+	<td >
 		<%= book.author  %>
 	</td>
-	<td style = "border: 0.5px solid black;width: 100px">
+	<td>
 		<%= book.description %>
 	</td>
-	<td style = "border: 0.5px solid black;width: 100px">
+	<td>
 		<%= book.category %>
 	</td>
-	<td style = "border: 0.5px solid black;width: 100px">
+	<td>
 		<!-- <button class = "edit-book" data-id = "<%=book.id %>" > edit </button> -->
 		<%= link_to 'edit', edit_admin_book_path(book), class: 'btn-success' %>
 	</td>
